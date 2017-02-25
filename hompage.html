@@ -1,0 +1,36 @@
+<html>
+
+<script language = 'JavaScript'>
+
+function startup(){
+  var Parse = require('parse');
+  Parse.initialize("57vlCjkMxDqj7oyYSYLLBflLxuags8IVwSYHGWfW", "V1riV7jyjcsQ1PNeJDMankWvWqVacabgJWYno1S7");
+  Parse.serverURL = 'https://parseapi.back4app.com/';
+}
+
+function login(){
+  var usernameText = document.getElementById('usernameText');
+  var passwordText = document.getElementById('passwordText');
+
+  Parse.user.login(usernameText, passwordText, {
+    success: function(user) {
+      alert("Successful login");
+    },
+    error: function(user, error) {
+      alert("Invalid login");
+    }
+  });
+}
+</script>
+
+<head>
+  <title>Reigning Bananas</title>
+</head>
+<body onload="startup();">
+  <input type="text" id="usernameText" placeholder="username"/>
+  <br>
+  <input type="text" id="passwordText" placeholder="password"/>
+  <br>
+  <input type="submit" id="loginButton" onclick="login()" value="Log in"/>
+
+</html>
