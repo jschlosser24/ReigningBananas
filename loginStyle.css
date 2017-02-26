@@ -11,6 +11,13 @@ h1 {
         transform: translate(-50%, -50%)
 }
 
+img {
+  position: absolute;
+  top: 500px;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
+}
 
 body{
   background-color: rgb(156,245,255);

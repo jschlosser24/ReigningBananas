@@ -11,17 +11,20 @@
 <script language = 'Javascript'>
 
 function login(){
-var nameText = document.getElementById("nameText");
-
-var user = Parse.User.current();
-nameText.innerHtml = "Welcome to the page " + user.get("name");
+  var nameText = document.getElementById('nameText');
+  var currentUser = Parse.User.current();
+  nameText.innerHTML = currentUser.get("name");
 }
 </script>
+
 <head>
   <title>Reigning Bananas</title>
 </head>
-<h1>
-  <div id="nameText"/><br>
+<h1> Welcome to the page
+  <div id="nameText"></div>
+</h1>
+<body>
   <img src="./kingBanana.png"/>
+</body>
 
 </html>
