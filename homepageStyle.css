@@ -1,18 +1,26 @@
 h1 {
-  font: 1em/150% Helvetica, Arial, sans-serif;
+  font: 4em/150% Times;
   max-width: 15em;
-  background-color: white;
+  background-color: rgb(156, 245, 255);
+  Color: red;
   border: 1px solid black;
   padding: 5px;
- position: absolute;
-        top: 50%;
-        left: 50%;
-        margin-right: -50%;
-        transform: translate(-50%, -50%)
+  text-shadow: 3px 2px rgb(156, 159, 161);
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
 }
 
+img {
+  position: absolute;
+  top: 500px;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
+}
 
-body{
-  background-color: rgb(156,245,255);
-  background-repeat: no-repeat;
+body {
+  background-image: url(http://www.pngall.com/wp-content/uploads/2016/07/Confetti-Free-Download-PNG.png);
 }

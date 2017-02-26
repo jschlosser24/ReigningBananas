@@ -1,8 +1,27 @@
 <html>
+<link rel="stylesheet" type="text/css" href="homepageStyle.css">
+
+<script type-"text/javascript" src="scripts/jquery.js"></script>
+<script src="https://npmcdn.com/parse@1.8.5/dist/parse-latest.js"></script>
+<!--<script type="text/javascript" src="scripts/app.js"></script>-->
+<script>
+  Parse.initialize("57vlCjkMxDqj7oyYSYLLBflLxuags8IVwSYHGWfW", "V1riV7jyjcsQ1PNeJDMankWvWqVacabgJWYno1S7", "jQ9dOi8WcgLqtHvkkwEqGze7zRpzJtVAWedEGtB3");
+  Parse.serverURL = 'https://parseapi.back4app.com/';
+</script>
+<script language = 'Javascript'>
+
+function login(){
+var nameText = document.getElementById("nameText");
+
+var user = Parse.User.current();
+nameText.innerHtml = "Welcome to the page " + user.get("name");
+}
+</script>
 <head>
   <title>Reigning Bananas</title>
 </head>
-<body>
-  You have successfully logged in!
+<h1>
+  <div id="nameText"/><br>
+  <img src="./kingBanana.png"/>
 
 </html>
