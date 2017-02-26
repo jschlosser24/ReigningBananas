@@ -1,9 +1,18 @@
 <html>
 
-<script language = 'JavaScript'>
+<head>
+  <title>Reigning Bananas</title>
+  <link rel="stylesheet" type="text/css" href="homepageStyle.css">
+
+  <script type-"text/javascript" src="scripts/jquery.js"></script>
+  <script src="https://npmcdn.com/parse@1.8.5/dist/parse-latest.js"></script>
+  <!--<script type="text/javascript" src="scripts/app.js"></script>-->
+
+<h1>
+
+<script language = 'Javascript'>
 
 function startup(){
-  var Parse = require('./node_modules/parse');
   Parse.initialize("57vlCjkMxDqj7oyYSYLLBflLxuags8IVwSYHGWfW", "V1riV7jyjcsQ1PNeJDMankWvWqVacabgJWYno1S7");
   Parse.serverURL = 'https://parseapi.back4app.com/';
 }
@@ -12,9 +21,9 @@ function login(){
   var usernameText = document.getElementById('usernameText');
   var passwordText = document.getElementById('passwordText');
 
-  Parse.user.login(usernameText, passwordText, {
+  Parse.User.logIn(usernameText, passwordText, {
     success: function(user) {
-      window.location.replace = homepage2.html;
+      window.location.replace = homepage.html;
     },
     error: function(user, error) {
       alert("Invalid login");
@@ -23,21 +32,18 @@ function login(){
 }
 </script>
 
-<head>
-  <title>Reigning Bananas</title>
-  <link rel="stylesheet" type="text/css" href="homepageStyle.css">
-</head>
-<h1>
   <center>Login <br>
   <body onload="startup();">
     <input type="text" id="usernameText" placeholder="username"/>
     <br>
     <input type="text" id="passwordText" placeholder="password"/>
     <br>
-    <input type="submit" id="loginButton" onclick="login()" value="Log in"/> <br>
+    <input type="submit" id="loginButton" onclick="login" value="Log in"/> <br>
     Or create new account
     <input type="submit" id="createAccountButton" onclick="window.location.href='createAccount.html'" value="Create Account"/>
 
 </h1>
+
+
 
 </html>
