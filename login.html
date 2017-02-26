@@ -32,36 +32,31 @@
 
 <script language = 'Javascript'>
 
-//function startup(){
-//}
-
 function login(){
   var usernameText = document.getElementById('usernameText');
   var passwordText = document.getElementById('passwordText');
 
-  Parse.User.logIn(usernameText, passwordText, {
+  Parse.User.logIn(usernameText.value, passwordText.value, {
     success: function(user) {
-      window.location.replace = homepage.html;
+      window.location.href = 'homepage.html';
     },
     error: function(user, error) {
-      alert("Invalid login");
+      alert("Error: " + error.code + " " + error.message);
     }
   });
 }
 </script>
 
   <center>Login <br>
-  <body><!-- onload="startup();">-->
+  <body>
     <input type="text" id="usernameText" placeholder="username"/>
     <br>
     <input type="text" id="passwordText" placeholder="password"/>
     <br>
-    <input type="submit" id="loginButton" onclick="login" value="Log in"/> <br>
+    <input type="submit" id="loginButton" onclick="login()" value="Log in"/> <br>
     Or create new account
     <input type="submit" id="createAccountButton" onclick="window.location.href='createAccount.html'" value="Create Account"/>
 
 </h1>
-
-
 
 </html>
