@@ -1,0 +1,18 @@
+h1 {
+  font: 1em/150% Helvetica, Arial, sans-serif;
+  max-width: 15em;
+  background-color: white;
+  border: 1px solid black;
+  padding: 5px;
+ position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%)
+}
+
+
+body{
+  background-color: rgb(156,245,255);
+  background-repeat: no-repeat;
+}
