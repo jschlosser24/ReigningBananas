@@ -10,18 +10,22 @@
 </script>
 <script language = 'Javascript'>
 
-function login(){
-  var nameText = document.getElementById('nameText');
-  var currentUser = Parse.User.current();
-  nameText.innerHTML = currentUser.get("name");
-}
+  function getName(){
+    var currentUser = Parse.User.current();
+    if (currentUser.get("name") != null) {
+      document.getElementById('nameText').innerHTML = currentUser.get("name") + "!";
+    } else {
+      document.getElementById('nameText').innerHTML = currentUser.getUsername() + "!";
+    }
+  }
+  window.onload = getName;
 </script>
 
 <head>
   <title>Reigning Bananas</title>
 </head>
 <h1> Welcome to the page
-  <div id="nameText"></div>
+  <center><div id="nameText"></div>
 </h1>
 <body>
   <img src="./kingBanana.png"/>
