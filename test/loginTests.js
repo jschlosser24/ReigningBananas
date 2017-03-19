@@ -1,7 +1,7 @@
 var Browser = require('zombie');
 
 var browser = new Browser({ debug: true, runSctipts: true, maxWait: 10000, waitFor: 1000 });
-browser.visit('https://localhost:8080/login', function() {
+browser.visit('https://localhost/ReigningBananas/login.html', function() {
   browser.assert.text('title', 'Reigning Bananas Login');
 });
 
