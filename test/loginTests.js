@@ -1,6 +1,8 @@
 $(document).ready(function () {
 
   QUnit.test("login", function(assert) {
+    assert.expect(2);
+
     var username = "user4";
     var password = "pass4";
     var usernameText = $("input[id$=usernameText]");
@@ -15,6 +17,8 @@ $(document).ready(function () {
   });
 
   QUnit.test("homepage", function(assert) {
+    assert.expect(2);
+
     var nameText = $("div[id$=nameText]");
     var name = "Kevin";
 
