@@ -17,7 +17,7 @@ $(document).ready(function () {
   QUnit.test("homepage", function(assert) {
     var nameText = $("div[id$=nameText]");
     var name = "Kevin";
-    
+
     assert.ok(nameText, "nameText input exists and made it to the homepage");
 
     assert.equal(getName(), name, "The logged in user should have the name kevin");

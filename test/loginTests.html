@@ -24,9 +24,11 @@ function login(){
   Parse.User.logIn(usernameText.value, passwordText.value, {
     success: function(user) {
       window.location.href = 'homepageTests.html';
+      return 1;
     },
     error: function(user, error) {
       alert("Error: " + error.code + " " + error.message);
+      return 0;
     }
   });
 }
