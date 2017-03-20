@@ -1,0 +1,45 @@
+<html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>QUnit Login Tests</title>
+<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.2.0.css">
+<link rel="stylesheet" type="text/css" href="homepageStyle.css">
+
+<script type="text/javascript" src="scripts/jquery.js"></script>
+<script src="https://npmcdn.com/parse@1.8.5/dist/parse-latest.js"></script>
+<script>
+  Parse.initialize("57vlCjkMxDqj7oyYSYLLBflLxuags8IVwSYHGWfW", "V1riV7jyjcsQ1PNeJDMankWvWqVacabgJWYno1S7", "jQ9dOi8WcgLqtHvkkwEqGze7zRpzJtVAWedEGtB3");
+  Parse.serverURL = 'https://parseapi.back4app.com/';
+</script>
+<script language = 'Javascript'>
+
+  function getName(){
+    var currentUser = Parse.User.current();
+    if (currentUser.get("name") != null) {
+      document.getElementById('nameText').innerHTML = currentUser.get("name") + "!";
+      return currentUser.get("name");
+    } else {
+      document.getElementById('nameText').innerHTML = currentUser.getUsername() + "!";
+      return currentUser.getUsername();
+    }
+  }
+  window.onload = getName;
+</script>
+
+<head>
+  <title>Reigning Bananas Homepage</title>
+</head>
+<h1 id="welcomeMessage"> Welcome to the page
+  <center><div id="nameText"></div>
+</h1>
+<body>
+  <img src="./kingBanana.png"/>
+</body>
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+  <script src="https://code.jquery.com/qunit/qunit-2.2.0.js"></script>
+  <script type="text/javascript" src="../scripts/jquery.js"></script>
+  <script type="text/javascript" src="loginTests.js"></script>
+</body>
+</html>

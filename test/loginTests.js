@@ -1,20 +1,26 @@
-var Browser = require('zombie');
+$(document).ready(function () {
 
-var browser = new Browser({ debug: true, runSctipts: true, maxWait: 10000, waitFor: 1000 });
-browser.visit('https://localhost:8080/login', function() {
-  browser.assert.text('title', 'Reigning Bananas Login');
-});
+  QUnit.test("login", function(assert) {
+    var username = "user4";
+    var password = "pass4";
+    var usernameText = $("input[id$=usernameText]");
+    var passwordText = $("input[id$=passwordText]");
+    var loginButton = $("input[id$=loginButton]");
+    assert.ok(usernameText, "usernameText input exists");
+    assert.ok(passwordText, "passwordText input exists");
 
-describe('login page', function () {
-  before(function(done) {
-    browser.fill('usernameText', 'user4').fill('passwordText', 'pass4').pressButton('loginButton', done());
+    usernameText.val(username);
+    passwordText.val(password);
+    loginButton.trigger("click");
   });
 
-  it('should be successful', function() {
-    browser.assert.success();
-  });
+  QUnit.test("homepage", function(assert) {
+    var nameText = $("div[id$=nameText]");
+    var name = "Kevin";
+    
+    assert.ok(nameText, "nameText input exists and made it to the homepage");
 
-  it('should see the welcome page', function() {
-    browser.assert.text('h1', 'Welcome to the page Kevin!');
+    assert.equal(getName(), name, "The logged in user should have the name kevin");
+
   });
 });
