@@ -2,31 +2,21 @@
 <link rel="stylesheet" type="text/css" href="homepageStyle.css">
 
 <script type="text/javascript" src="scripts/jquery.js"></script>
+<script type="text/javascript" src="homepage.js"></script>
 <script src="https://npmcdn.com/parse@1.8.5/dist/parse-latest.js"></script>
 <script>
-  Parse.initialize("57vlCjkMxDqj7oyYSYLLBflLxuags8IVwSYHGWfW", "V1riV7jyjcsQ1PNeJDMankWvWqVacabgJWYno1S7", "jQ9dOi8WcgLqtHvkkwEqGze7zRpzJtVAWedEGtB3");
-  Parse.serverURL = 'https://parseapi.back4app.com/';
-</script>
-<script type="text/javascript">
-function getName(){
-  var currentUser = Parse.User.current();
-  if (currentUser.get("name") != null) {
-    document.getElementById('nameText').innerHTML = currentUser.get("name") + "!";
-  } else {
-    document.getElementById('nameText').innerHTML = currentUser.getUsername() + "!";
-  }
-}
-window.onload = getName;
+Parse.initialize("57vlCjkMxDqj7oyYSYLLBflLxuags8IVwSYHGWfW", "V1riV7jyjcsQ1PNeJDMankWvWqVacabgJWYno1S7", "jQ9dOi8WcgLqtHvkkwEqGze7zRpzJtVAWedEGtB3");
+Parse.serverURL = 'https://parseapi.back4app.com/';
 </script>
 
-<head>
+<head onload="getName()">
   <title>Reigning Bananas Homepage</title>
 </head>
 <h1 id="welcomeMessage"> Welcome to the page
   <center><div id="nameText"></div>
-</h1>
-<body>
-  <img src="./kingBanana.png"/>
-</body>
+  </h1>
+  <body>
+    <img src="./kingBanana.png"/>
+  </body>
 
-</html>
+  </html>
