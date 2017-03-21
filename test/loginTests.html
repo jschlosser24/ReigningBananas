@@ -11,43 +11,12 @@
   Parse.serverURL = 'https://parseapi.back4app.com/';
   </script>
 </head>
-<h1>
-
-  <script language = 'Javascript'>
-  function login(){
-    var usernameText = document.getElementById('usernameText');
-    var passwordText = document.getElementById('passwordText');
-
-    Parse.User.logIn(usernameText.value, passwordText.value, {
-      success: function(user) {
-        window.location.href = 'homepageTests.html';
-        return 1;
-      },
-      error: function(user, error) {
-        alert("Error: " + error.code + " " + error.message);
-        return 0;
-      }
-    });
-  }
-  </script>
-
-  <center>Login <br>
-    <body>
-      <input type="text" id="usernameText" placeholder="username"/>
-      <br>
-      <input type="text" id="passwordText" placeholder="password"/>
-      <br>
-      <input type="submit" id="loginButton" onclick="login()" value="Log in"/> <br>
-      Or create new account
-      <input type="submit" id="createAccountButton" onclick="window.location.href='createAccount.html'" value="Create Account"/>
-
-    </h1>
-    <body>
-      <div id="qunit"></div>
-      <div id="qunit-fixture"></div>
-      <script src="https://code.jquery.com/qunit/qunit-2.2.0.js"></script>
-      <script type="text/javascript" src="../scripts/jquery.js"></script>
-      <script type="text/javascript" src="../login.js"></script>
-      <script type="text/javascript" src="loginTests.js"></script>
-    </body>
-    </html>
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+  <script src="https://code.jquery.com/qunit/qunit-2.2.0.js"></script>
+  <script type="text/javascript" src="../scripts/jquery.js"></script>
+  <script type="text/javascript" src="../login.js"></script>
+  <script type="text/javascript" src="loginTests.js"></script>
+</body>
+</html>
