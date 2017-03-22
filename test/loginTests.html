@@ -1,22 +1,23 @@
 <html>
 <head>
+<base href="/ReigningBananas/">
+<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.2.0.css">
+<script type="text/javascript" src="scripts/jquery.js"></script>
+<script type="text/javascript" src="login.js"></script>
+<script src="https://npmcdn.com/parse@1.8.5/dist/parse-latest.js"></script>
+<script>
+Parse.initialize("57vlCjkMxDqj7oyYSYLLBflLxuags8IVwSYHGWfW", "V1riV7jyjcsQ1PNeJDMankWvWqVacabgJWYno1S7", "jQ9dOi8WcgLqtHvkkwEqGze7zRpzJtVAWedEGtB3");
+Parse.serverURL = 'https://parseapi.back4app.com/';
+</script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>QUnit Login Tests</title>
-  <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.2.0.css">
-
-  <script src="https://npmcdn.com/parse@1.8.5/dist/parse-latest.js"></script>
-  <script>
-  Parse.initialize("57vlCjkMxDqj7oyYSYLLBflLxuags8IVwSYHGWfW", "V1riV7jyjcsQ1PNeJDMankWvWqVacabgJWYno1S7", "jQ9dOi8WcgLqtHvkkwEqGze7zRpzJtVAWedEGtB3");
-  Parse.serverURL = 'https://parseapi.back4app.com/';
-  </script>
 </head>
+
 <body>
   <div id="qunit"></div>
   <div id="qunit-fixture"></div>
   <script src="https://code.jquery.com/qunit/qunit-2.2.0.js"></script>
-  <script type="text/javascript" src="../scripts/jquery.js"></script>
-  <script type="text/javascript" src="../login.js"></script>
-  <script type="text/javascript" src="loginTests.js"></script>
+  <script type="text/javascript" src="test/loginTests.js"></script>
 </body>
 </html>
