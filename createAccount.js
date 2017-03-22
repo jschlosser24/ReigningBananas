@@ -1,19 +1,14 @@
-function createAccount(){
-  var usernameText = document.getElementById('usernameText');
-  var passwordText = document.getElementById('passwordText');
-  var firstNameText = document.getElementById('firstNameText');
-  var lastNameText = document.getElementById('lastNameText');
-
+function createAccount(username, password, firstName, lastName){
   var user = new Parse.User();
-  user.set("username", usernameText.value);
-  user.set("password", passwordText.value);
-  if (firstNameText.value != null){
-    user.set("firstName", firstNameText.value);
+  user.set("username", username);
+  user.set("password", password);
+  if (firstName != null){
+    user.set("firstName", firstName);
   } else {
     user.set("firstName", "");
   }
-  if (lastNameText.value != null){
-    user.set("lastName", lastNameText.value);
+  if (lastName != null){
+    user.set("lastName", lastName);
   } else {
     user.set("lastName", "");
   }
@@ -21,7 +16,7 @@ function createAccount(){
   user.signUp(null, {
     success: function(user) {
       Parse.User.logOut();
-      window.location.href = 'login.html';
+      window.location.href = "login.html";
     },
     error: function(user, error) {
       // Show the error message somewhere and let the user try again.
