@@ -28,10 +28,15 @@ QUnit.module("Bad accounts");
     var lastName = "tsal";
 
     createAccount(username, password, firstName, lastName);
-    setTimeout(function () {
-      assert.notEqual(window.location.href, "http://localhost/ReigningBananas/test/login.html", "does not go to login page after creating a new user");
-      start();
-    }, 1000);
-  });
+    var query = new Parse.Query("User");
+    query.equalTo("username", "");
+    query.find({
+      success: function() {
+        window.location.href = "test/failed.html";
+      },
+      error: function() {
+        window.location.href = "test/success.html";
+      }
+    });
 
 });
