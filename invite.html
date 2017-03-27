@@ -1,0 +1,32 @@
+<html>
+<head>
+  <base href="/ReigningBananas/">
+  <link rel="stylesheet" type="text/css" href="css/loginStyle.css">
+  <script type="text/javascript" src="scripts/jquery.js"></script>
+  <script type="text/javascript" src="invite.js"></script>
+  <script src="https://npmcdn.com/parse@1.8.5/dist/parse-latest.js"></script>
+  <script>
+  Parse.initialize("57vlCjkMxDqj7oyYSYLLBflLxuags8IVwSYHGWfW", "V1riV7jyjcsQ1PNeJDMankWvWqVacabgJWYno1S7", "jQ9dOi8WcgLqtHvkkwEqGze7zRpzJtVAWedEGtB3");
+  Parse.serverURL = 'https://parseapi.back4app.com/';
+  </script>
+  <title>Reigning Bananas Invite User To Project</title>
+</head>
+
+<div class="topnav" id="myTopnav">
+  <a href="homepage.html">Home</a>
+  <a href="invite.html">Invite</a>
+  <a href="">Project</a>
+</div>
+
+<h1>
+  <center>Enter the username of who you want to invite and project name of the project you want them to join<br> </center>
+  <body>
+    <input type="text" id="usernameText" placeholder="username"/>
+    <br>
+    <input type="text" id="projectNameText" placeholder="project name"/>
+    <br>
+    <input type="submit" id="inviteButton" onclick="invite(usernameText.value, projectNameText.value)" value="Invite User"/>
+    <br>
+    <input type="submit" id="goBackButton" onclick="window.location.href='homepage.html'" value="Go back to the homepage"/>
+  </h1>
+  </html>
