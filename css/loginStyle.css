@@ -1,11 +1,11 @@
 h1 {
-  font: 1em/150% Helvetica, Arial, sans-serif;
-  max-width: 20em;
-  background-color: white;
-  border: 1px solid black;
-  padding: 5px;
- position: absolute;
-        top: 50%;
+font-size:60;
+font:  Helvetica, Arial, serif;
+background-color:grey;
+color: rgb(219,185,63);
+border: 15px solid black;
+position: absolute;
+        top: 5%;
         left: 50%;
         margin-right: -50%;
         transform: translate(-50%, -50%)
@@ -20,8 +20,24 @@ img {
 }
 
 body{
-  background-color: rgb(156,245,255);
+  background-image: url(blueBack.png);
+  /*background-color: rgb(156,245,255);*/
   background-repeat: no-repeat;
+}
+
+div{
+  text-align: justify;
+  font: 1em/150% Helvetica, Arial, sans-serif;
+  max-width: 100em;
+  background-color: white;
+  border: 2px solid black;
+  padding: 5px;
+  width: 350;
+ position: absolute;
+        top: 45%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%)
 }
 
 .image {
