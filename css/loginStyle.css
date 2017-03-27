@@ -20,8 +20,8 @@ img {
 }
 
 body{
-  background-image: url(blueBack.png);
-  /*background-color: rgb(156,245,255);*/
+ /* background-image: url(blueBack.png);*/
+  background-color: rgb(156,245,255);
   background-repeat: no-repeat;
 }
 
