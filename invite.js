@@ -13,6 +13,7 @@ function invite(username, projectName) {
       query.get({
         success: function(project) {
           //add user to project
+          //project array in user table of project ids to look up in project table
           window.location.href = "invite.html"
         },
         error: function(projectName) {

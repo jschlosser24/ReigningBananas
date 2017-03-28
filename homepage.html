@@ -15,14 +15,15 @@
 <div class="topnav" id="myTopnav">
   <a href="homepage.html">Home</a>
   <a href="invite.html">Invite</a>
-  <a href="">Project</a>
+  <a href="createProject.html">Project</a>
 </div>
 
 <h1 id="welcomeMessage"> Welcome to the page
   <center><div id="nameText"></div>
   </h1>
-  <body onload="getName()">
+  <body onload="getName(); getProjects()">
     <img src="kingBanana.png"/>
+    <ol id="projectsText"></ol>
     <input type="text" id="projectNameText" placeholder="New Project Name"/>
     <input type="submit" id="newProjectButton" onclick="newProject(projectNameText.value)" value="Create New Project"/>
   </body>
