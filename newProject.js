@@ -1,5 +1,5 @@
-function newProject(newProjectName){
-  
+function newProject(newProjectName, description){
+
   Parse.User.projects.add(newProjectName, {
     success: function(user) {
       window.location.href = "homepage.html";
