@@ -1,13 +1,40 @@
-function newProject(newProjectName){
-  
-  Parse.User.projects.add(newProjectName, {
-    success: function(user) {
-      window.location.href = "homepage.html";
+function newProject(newProjectName, description){
+
+  var project = new Parse.Object("Projects");
+  project.add(newprojectName, "name");
+  project.add(description, "description");
+
+  var user = ParseUser.current()
+  var projectArray = user.get("project");
+
+  var count = 0;
+  var query = new Parse.Query("Projects")
+  query.equalTo("name", newProjectName);
+  query.count({
+    success: function(number){
+      count = number;
     },
-    error: function(user, error) {
-      alert("Error: " + error.code + " " + error.message);
+    error: function(error){
+
     }
-});
+  });
+  if(count == 0){
+    project.save({
+      success: function() {
+        projectArray.add(project.id);
+        user.save({
+          success: function() {
+            console.log("success");
+          },
+          error: function(error){
+          }
+          }
+        });
+      },
+      error: function(error){
+        console.log("error");
+      });
+    }
 }
 
 /**Parse.Object current( )
