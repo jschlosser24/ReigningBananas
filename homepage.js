@@ -25,8 +25,7 @@ function getProjects() {
         var link = document.createElement("a");
         link.appendChild(document.createTextNode(projectName));
         a.title = projectName;
-        //link will have to go to specific page project
-        a.href = "homepage.html";
+        a.href = "homepage.html";  //link will have to go to specific project page
         entry.appendChild(link);
         listProjects.appendChild(entry);
       },
