@@ -19,7 +19,7 @@ function getProjects() {
     var query = new Parse.Query("Project");
     query.equalTo("objectId", projects[i]);
     query.get({
-      success: function(projects[i]) {
+      success: function() {
         var projectName = projects[i].get("name");
         var entry = document.createElement("li");
         var link = document.createElement("a");
@@ -29,7 +29,7 @@ function getProjects() {
         entry.appendChild(link);
         listProjects.appendChild(entry);
       },
-      error: function(projects[i]) {
+      error: function() {
         alert("Error: Could not find project with id '" + projects[i] + "' in database");
       }
     });
