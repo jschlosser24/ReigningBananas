@@ -12,29 +12,28 @@ function newProject(newProjectName, description){
   query.equalTo("name", newProjectName);
   query.count({
     success: function(number){
-      count = number;
+      if(number == 0){
+        project.save(null, {
+          success: function() {
+            projectArray.add(project.id);
+            user.save(null, {
+              success: function() {
+              },
+              error: function(error){
+              }
+            });
+            alert("Project " + newProjectName + " was created successfully.");
+          },
+          error: function(error){
+          }
+        });
+    }
+
     },
     error: function(error){
 
     }
   });
-  if(count == 0){
-    project.save(null, {
-      success: function() {
-        projectArray.add(project.id);
-        user.save(null, {
-          success: function() {
-            //console.log("success");
-          },
-          error: function(error){
-          }
-        });
-      },
-      error: function(error){
-        // console.log("error");
-      }
-    });
-}
 }
 
 /**Parse.Object current( )

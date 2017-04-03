@@ -15,9 +15,10 @@ function invite(username, projectName) {
       query2.first({
         success: function(foundProject) {
           project = foundProject;
-          var objectId = project.id;
+          var objectId = foundProject.get("objectId");
+          document.getElementById("test").innerHTML = objectId;
           var projectArray = user.get("projects");
-          if (projectArray == null) {
+          if (projectArray == undefined) {
             projectArray = [objectId];
           } else {
             projectArray.push(objectId);
@@ -26,7 +27,7 @@ function invite(username, projectName) {
           user.set("projects", projectArray);
           user.save(null, {
             success: function() {
-              alert("User " + username + " was added to group " + projectName + " successfully.")
+              alert("User " + username + " was added to group " + projectName + " successfully.");
             },
             error: function(error) {
             }
