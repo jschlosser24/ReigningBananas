@@ -17,12 +17,12 @@ function newProject(newProjectName, description){
     }
   });
   if(count == 0){
-    project.save({
+    project.save(null, {
       success: function() {
         project.set("name", newProjectName.value);
         project.set("description", description.value);
         projectArray.add(project.id);
-        user.save({
+        user.save(null, {
           success: function() {
             //console.log("success");
           },
@@ -31,10 +31,10 @@ function newProject(newProjectName, description){
         });
       },
       error: function(error){
-        //console.log("error");
+        // console.log("error");
       }
     });
-  }
+}
 }
 
 /**Parse.Object current( )
