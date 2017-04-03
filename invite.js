@@ -7,18 +7,22 @@ function invite(username, projectName) {
   var project = Parse.Object.extend("Projects");
   var query = new Parse.Query(Parse.User);
   query.equalTo("username", username);
-  query.find({
+  query.first({
     success: function(foundUser) {
       user = foundUser;
       var query2 = new Parse.Query("Projects");
       query2.equalTo("name", projectName);
-      query2.find({
+      query2.first({
         success: function(foundProject) {
           project = foundProject;
-          var objectId = foundProject.get("objectId");
-          document.getElementById("test").innerHTML = objectId;
+          var objectId = project.id;
           var projectArray = user.get("projects");
-          projectArray.push(objectId);
+          if (projectArray == null) {
+            projectArray = [objectId];
+          } else {
+            projectArray.push(objectId);
+          }
+          document.getElementById("test").innerHTML = JSON.stringify(projectArray);
           user.set("projects", projectArray);
           user.save(null, {
             success: function() {
@@ -27,7 +31,7 @@ function invite(username, projectName) {
             error: function(error) {
             }
           });
-          window.location.href = "invite.html"
+          // window.location.href = "invite.html";
         },
         error: function(projectName) {
           alert("Error: Could not find project '" + projectName + "' in database");

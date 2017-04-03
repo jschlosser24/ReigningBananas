@@ -17,7 +17,6 @@ function getProjects() {
   var listProjects = document.getElementById("projectsListText");
   for (var i = 0; i < projects.length; i++){
     var query = new Parse.Query("Projects");
-    // query.equalTo("objectId", projects[i]);
     query.get(projects[i], {
       success: function(project) {
         var projectName = project.get("name");
