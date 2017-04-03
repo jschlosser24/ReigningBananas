@@ -1,30 +1,32 @@
 function invite(username, projectName) {
   if (username == null || projectName == null){
     alert("Please fill out all fields before submitting.");
+    return;
   }
-  var user = Parse.Object.extend("User");
-  var project = Parse.Object.extend("Project");
-  var query = new Parse.Query("User");
+  var user = Parse.User;
+  var project = Parse.Object.extend("Projects");
+  var query = new Parse.Query(Parse.User);
   query.equalTo("username", username);
-  // user = query.getFirst();  //get user
-  // var projectArray = user.get("projects");  //get array of projects the user is a part of
-  // var query2 = new Parse.Query("Project");
-  // query2.equalTo("name", projectName);
-  // project = query2.getFirst();  //get project
-  // var projectId = project.get("objectId");  //get object id of project
-  // projectArray.push(projectId); //add object id to array of projects the user is a part of
-  // user.set("projects", projectArray); //set the new project array to include the added project
   query.find({
-    success: function(user) {
-      var query2 = new Parse.Query("Project");
-      query.equalTo("name", projectName);
-      query.find({
-        success: function(project) {
-          var objectId = project.get("objectId");
+    success: function(foundUser) {
+      user = foundUser;
+      var query2 = new Parse.Query("Projects");
+      query2.equalTo("name", projectName);
+      query2.find({
+        success: function(foundProject) {
+          project = foundProject;
+          var objectId = foundProject.get("objectId");
+          document.getElementById("test").innerHTML = objectId;
           var projectArray = user.get("projects");
           projectArray.push(objectId);
           user.set("projects", projectArray);
-          alert("User " + username + " was added to group " + projectName + " successfully.")
+          user.save(null, {
+            success: function() {
+              alert("User " + username + " was added to group " + projectName + " successfully.")
+            },
+            error: function(error) {
+            }
+          });
           window.location.href = "invite.html"
         },
         error: function(projectName) {
