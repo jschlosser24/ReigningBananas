@@ -7,34 +7,31 @@ function newProject(newProjectName, description){
   var user = Parse.User.current()
   var projectArray = user.get("projects");
 
-  var count = 0;
   var query = new Parse.Query("Projects")
   query.equalTo("name", newProjectName);
   query.count({
     success: function(number){
-      count = number;
+      if(number == 0){
+        project.save(null, {
+          success: function() {
+            projectArray.add(project.id);
+            user.save(null, {
+              success: function() {
+              },
+              error: function(error){
+              }
+            });
+          },
+          error: function(error){
+          }
+        });
+    }
+
     },
     error: function(error){
 
     }
   });
-  if(count == 0){
-    project.save(null, {
-      success: function() {
-        projectArray.add(project.id);
-        user.save(null, {
-          success: function() {
-            //console.log("success");
-          },
-          error: function(error){
-          }
-        });
-      },
-      error: function(error){
-        // console.log("error");
-      }
-    });
-}
 }
 
 /**Parse.Object current( )

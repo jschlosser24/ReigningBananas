@@ -14,7 +14,7 @@ function invite(username, projectName) {
       query2.equalTo("name", projectName);
       query2.find({
         success: function(foundProject) {
-          project = foundProject;
+          project = foundProject;x
           var objectId = foundProject.get("objectId");
           document.getElementById("test").innerHTML = objectId;
           var projectArray = user.get("projects");
