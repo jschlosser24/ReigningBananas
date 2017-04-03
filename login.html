@@ -1,7 +1,7 @@
 <html>
 <head>
   <base href="/ReigningBananas/">
-  <link rel="stylesheet" type="text/css" href="css/loginStyle.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
   <script type="text/javascript" src="scripts/jquery.js"></script>
   <script type="text/javascript" src="login.js"></script>
   <script src="https://npmcdn.com/parse@1.8.5/dist/parse-latest.js"></script>
@@ -13,18 +13,21 @@
 </head>
 
 <img id="spinningBanana" class="image" src="bananaCircle.png" alt="" width="120" height="120">
-
-<h1>
-  <center>Login</center>
+<body id= "loginBody"></body>
+<h1 id="loginHeader">
+  <center>Login for Reigning Bananas</center>
   </h1>
-    <div><center>
-      <input type="text" id="usernameText" placeholder="username"/>
+    <div id ="loginBox"><center>
+      Username:
       <br>
-      <input type="text" id="passwordText" placeholder="password"/>
+      <input type="text" id="usernameText" placeholder="Username"/>
       <br>
-      <input type="submit" id="loginButton" onclick="login(usernameText.value, passwordText.value)" value="Log in"/> <br>
-      Or create new account
-      <input type="submit" id="createAccountButton" onclick="window.location.href='createAccount.html'" value="Create Account"/>
+      Password:
+      <br>
+      <input type="password" id="passwordText" placeholder="Password"/>
+      <br>
+      <input type="submit" id="createAccountButton" onclick="window.location.href='createAccount.html'" value="Sign Up"/>
+      <input type="submit" id="loginButton" onclick="login(usernameText.value, passwordText.value)" value="Sign In"/>
     </center>
     </div>
     </html>

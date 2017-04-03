@@ -1,7 +1,7 @@
 <html>
 <head>
   <base href="/ReigningBananas/">
-  <link rel="stylesheet" type="text/css" href="css/loginStyle.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
   <script type="text/javascript" src="scripts/jquery.js"></script>
   <script type="text/javascript" src="createAccount.js"></script>
   <script src="https://npmcdn.com/parse@1.8.5/dist/parse-latest.js"></script>
@@ -12,25 +12,28 @@
   <title>Reigning Bananas Create Account</title>
 </head>
 
-<div class="topnav" id="myTopnav">
-  <a href="homepage.html">Home</a>
-  <a href="invite.html">Invite</a>
-  <a href="createProject.html">Project</a>
-</div>
 
-<h1>
-  <center>Enter username and password for a new account <br> </center>
-  <body>
+<body id="inviteBody"></body>
+<h1 id="createAccountHeader">
+  <center>Enter username and password for a new account:<br> </center>
+    </h1>
+    <div id="createAccountBox">
+      <br>
     <input type="text" id="usernameText" placeholder="username"/> *required
+    <br>
     <br>
     <input type="text" id="passwordText" placeholder="password"/> *required
     <br>
+    <br>
     <input type="text" id="firstNameText" placeholder="first name"/>
     <br>
+    <br>
     <input type="text" id="lastNameText" placeholder="last name"/>
+    <br>
     <br>
     <input type="submit" id="createButton" onclick="createAccount(usernameText.value, passwordText.value, firstNameText.value, lastNameText.value)" value="Create Account"/>
     <br>
     <input type="submit" id="goBackButton" onclick="window.location.href='login.html'" value="Go back to login page"/>
-  </h1>
+    <br>
+</div>
   </html>

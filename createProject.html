@@ -1,7 +1,7 @@
 <html>
 <head>
   <base href="/ReigningBananas/">
-  <link rel="stylesheet" type="text/css" href="css/loginStyle.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
   <script type="text/javascript" src="scripts/jquery.js"></script>
   <script type="text/javascript" src="newProject.js"></script>
   <script src="https://npmcdn.com/parse@1.8.5/dist/parse-latest.js"></script>
@@ -17,17 +17,20 @@
   <a href="invite.html">Invite</a>
   <a href="createProject.html">Project</a>
 </div>
-
-<h1>
+<body id="inviteBody"></body>
+<h1 id="createProjectHeader">
   <center>Enter the Name of the Project and a description: <br> </center>
-  <body>
+</h1>
+<div id="createProjectBox">
+  <br>
     <input type="text" id="projectNameText" placeholder="Project Name"/> *required
+    <br>
     <br>
     <input type="text" id="descriptionText" placeholder="Description"/>
     <br>
+    <br>
     <input type="submit" id="createButton" onclick="newProject(projectNameText.value, descriptionText.value)" value="Create Project"/>
     <br>
-    <br>
     <input type="submit" id="goBackButton" onclick="window.location.href='homepage.html'" value="Go back to homepage"/>
-  </h1>
+</div>
   </html>
