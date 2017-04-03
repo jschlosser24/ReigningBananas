@@ -1,11 +1,11 @@
 function newProject(newProjectName, description){
 
   var project = new Parse.Object("Projects");
-  project.add(newprojectName, "name");
-  project.add(description, "description");
+  project.add("name", newProjectName.value);
+  project.add("description", description.value);
 
   var user = ParseUser.current()
-  var projectArray = user.get("project");
+  var projectArray = user.get("projects");
 
   var count = 0;
   var query = new Parse.Query("Projects")
