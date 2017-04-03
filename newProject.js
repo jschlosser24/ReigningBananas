@@ -1,10 +1,8 @@
 function newProject(newProjectName, description){
 
   var project = new Parse.Object("Projects");
-  project.add("name", newProjectName.value);
-  project.add("description", description.value);
 
-  var user = ParseUser.current()
+  var user = Parse.User.current()
   var projectArray = user.get("projects");
 
   var count = 0;
@@ -21,20 +19,22 @@ function newProject(newProjectName, description){
   if(count == 0){
     project.save({
       success: function() {
+        project.set("name", newProjectName.value);
+        project.set("description", description.value);
         projectArray.add(project.id);
         user.save({
           success: function() {
-            console.log("success");
+            //console.log("success");
           },
           error: function(error){
-          }
           }
         });
       },
       error: function(error){
-        console.log("error");
-      });
-    }
+        //console.log("error");
+      }
+    });
+  }
 }
 
 /**Parse.Object current( )
