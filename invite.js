@@ -15,21 +15,23 @@ function invite(username, projectName) {
       query2.first({
         success: function(foundProject) {
           project = foundProject;
-          var objectId = foundProject.get("objectId");
-          document.getElementById("test").innerHTML = objectId;
+          var objectId = project.id;
           var projectArray = user.get("projects");
-          if (projectArray == undefined) {
-            projectArray = [objectId];
+          if (projectArray[0] == null) {
+            projectArray[0] = objectId;
           } else {
             projectArray.push(objectId);
           }
-          document.getElementById("test").innerHTML = JSON.stringify(projectArray);
           user.set("projects", projectArray);
+          document.getElementById("test").innerHTML = JSON.stringify(user);
+          // Saving a user without a live session does not work.
           user.save(null, {
+            useMasterKey: true,
             success: function() {
               alert("User " + username + " was added to group " + projectName + " successfully.");
             },
             error: function(error) {
+              alert("Error: " + error.code + " " + error.message);
             }
           });
           // window.location.href = "invite.html";

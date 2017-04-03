@@ -12,7 +12,8 @@ function createAccount(username, password, firstName, lastName){
   } else {
     user.set("lastName", "");
   }
-  user.set("projects", "");
+  var projects = [];
+  user.set("projects", projects);
 
   user.signUp(null, {
     success: function(user) {
