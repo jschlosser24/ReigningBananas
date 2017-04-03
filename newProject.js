@@ -1,6 +1,8 @@
 function newProject(newProjectName, description){
 
   var project = new Parse.Object("Projects");
+  project.set("name", newProjectName);
+  project.set("description", description);
 
   var user = Parse.User.current()
   var projectArray = user.get("projects");
@@ -19,8 +21,6 @@ function newProject(newProjectName, description){
   if(count == 0){
     project.save(null, {
       success: function() {
-        project.set("name", newProjectName.value);
-        project.set("description", description.value);
         projectArray.add(project.id);
         user.save(null, {
           success: function() {
