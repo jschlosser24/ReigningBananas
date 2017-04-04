@@ -15,26 +15,19 @@ function invite(username, projectName) {
       query2.first({
         success: function(foundProject) {
           project = foundProject;
-          var objectId = project.id;
-          var projectArray = user.get("projects");
-          if (projectArray[0] == null) {
-            projectArray[0] = objectId;
-          } else {
-            projectArray.push(objectId);
-          }
-          user.set("projects", projectArray);
-          document.getElementById("test").innerHTML = JSON.stringify(user);
-          // Saving a user without a live session does not work.
-          user.save(null, {
-            useMasterKey: true,
+          var projectObjectId = project.id;
+          var userObjectId = user.id;
+          var projectUser = new Parse.Object("UserProjectLookup");
+          projectUser.set("project", projectObjectId);
+          projectUser.set("user", userObjectId);
+          projectUser.save(null, {
             success: function() {
               alert("User " + username + " was added to group " + projectName + " successfully.");
             },
             error: function(error) {
-              alert("Error: " + error.code + " " + error.message);
+                alert("Error: " + error.code + " " + error.message);
             }
           });
-          // window.location.href = "invite.html";
         },
         error: function(projectName) {
           alert("Error: Could not find project '" + projectName + "' in database");
