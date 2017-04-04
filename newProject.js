@@ -6,8 +6,6 @@ function newProject(newProjectName, description){
 
   var user = Parse.User.current()
   var projectArray = user.get("projects");
-
-  var count = 1;
   var query = new Parse.Query("Projects")
   query.equalTo("name", newProjectName);
   query.count({
@@ -15,14 +13,15 @@ function newProject(newProjectName, description){
       if(number == 0){
         project.save(null, {
           success: function() {
-            projectArray.add(project.id);
+            projectArray.push(project.id);
+            user.set("projects", projectArray);
             user.save(null, {
               success: function() {
+                alert("success");
               },
               error: function(error){
               }
             });
-            alert("Project " + newProjectName + " was created successfully.");
           },
           error: function(error){
           }
