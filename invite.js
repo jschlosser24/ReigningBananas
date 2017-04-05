@@ -1,5 +1,5 @@
 function invite(username, projectName) {
-  if (username == null || projectName == null){
+  if (username == "" || projectName == ""){
     alert("Please fill out all fields before submitting.");
     return;
   }
@@ -17,15 +17,31 @@ function invite(username, projectName) {
           project = foundProject;
           var projectObjectId = project.id;
           var userObjectId = user.id;
-          var projectUser = new Parse.Object("UserProjectLookup");
-          projectUser.set("project", projectObjectId);
-          projectUser.set("user", userObjectId);
-          projectUser.save(null, {
-            success: function() {
-              alert("User " + username + " was added to group " + projectName + " successfully.");
+          var query3 = new Parse.Query("UserProjectLookup");
+          query3.equalTo("project", project.id).equalTo("user", Parse.User.current().id);
+          query3.count({
+            success: function(number) {
+              if (number == 1){
+                var projectUser = new Parse.Object("UserProjectLookup");
+                projectUser.set("project", projectObjectId);
+                projectUser.set("user", userObjectId);
+                projectUser.save(null, {
+                  success: function() {
+                    alert("User " + username + " was added to group " + projectName + " successfully.");
+                    window.location.href = "invite.html";
+                  },
+                  error: function(error) {
+                      alert("Error: " + error.code + " " + error.message);
+                  }
+                });
+              }
+              if (number == 0){
+                alert("Error: Could not invite user to project '" + projectName + "' because you are not a member of that project or user '" + username + "' does not exists.");
+                return;
+              }
             },
-            error: function(error) {
-                alert("Error: " + error.code + " " + error.message);
+            error: function() {
+              alert("Error: " + error.code + " " + error.message);
             }
           });
         },

@@ -88,7 +88,26 @@
 }
 
 #homePageBody{
-  background-image: url(http://www.pngall.com/wp-content/uploads/2016/07/Confetti-Free-Download-PNG.png);
+  background-image: url("http://cdn.pcwallart.com/images/blue-gradient-background-wallpaper-1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+ /*background-color: rgb(156,245,255);*/
+}
+
+#projectList{
+  text-align: left;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 5px;
+  padding-bottom: 7px;
+  font: 1em/150% Helvetica, Arial, sans-serif;
+  background-color: grey;
+  border: 2px solid black;
+  position: absolute;
+  top: 12%;
+  left: 7%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
 }
 
 /*Invite page CSS*/
