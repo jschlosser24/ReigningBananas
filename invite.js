@@ -15,23 +15,35 @@ function invite(username, projectName) {
       query2.first({
         success: function(foundProject) {
           project = foundProject;
-          var projectObjectId = project.id;
-          var userObjectId = user.id;
           var query3 = new Parse.Query("UserProjectLookup");
           query3.equalTo("project", project.id).equalTo("user", Parse.User.current().id);
           query3.count({
             success: function(number) {
               if (number == 1){
-                var projectUser = new Parse.Object("UserProjectLookup");
-                projectUser.set("project", projectObjectId);
-                projectUser.set("user", userObjectId);
-                projectUser.save(null, {
-                  success: function() {
-                    alert("User " + username + " was added to group " + projectName + " successfully.");
-                    window.location.href = "invite.html";
+                var query4 = new Parse.Query("UserProjectLookup");
+                query4.equalTo("project", project.id).equalTo("user", user.id);
+                query4.count({
+                  success: function(number2) {
+                    if (number2 == 0) {
+                      var projectUser = new Parse.Object("UserProjectLookup");
+                      projectUser.set("project", project.id);
+                      projectUser.set("user", user.id);
+                      projectUser.save(null, {
+                        success: function() {
+                          alert("User " + username + " was added to group " + projectName + " successfully.");
+                          window.location.href = "invite.html";
+                        },
+                        error: function(error) {
+                            alert("Error: " + error.code + " " + error.message);
+                        }
+                      });
+                    } else {
+                      alert("Error: Cannot add a user to a project that they are already in.");
+                      return;
+                    }
                   },
-                  error: function(error) {
-                      alert("Error: " + error.code + " " + error.message);
+                  error: function() {
+                    alert("Error: " + error.code + " " + error.message);
                   }
                 });
               }
