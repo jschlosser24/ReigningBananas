@@ -20,6 +20,7 @@ function createProject(newProjectName, description){
             userProject.save(null, {
               success: function(){
                 alert("Project " + newProjectName + " was created successfully.");
+                window.location.href = "createProject.html";
               },
               error: function(error){
                 alert("Error: " + error.code + " " + error.message);
