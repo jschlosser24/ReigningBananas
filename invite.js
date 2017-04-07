@@ -7,6 +7,16 @@ function invite(username, projectName) {
   var project = Parse.Object.extend("Projects");
   var query = new Parse.Query(Parse.User);
   query.equalTo("username", username);
+  query.count({
+    success: function(count){
+      if (count == 0) {
+        alert("Error: user '" + username + "' does not exist.");
+      }
+    },
+    error: function() {
+      alert("Error: " + error.code + " " + error.message);
+    }
+  });
   query.first({
     success: function(foundUser) {
       user = foundUser;
@@ -32,6 +42,7 @@ function invite(username, projectName) {
                         success: function() {
                           alert("User " + username + " was added to group " + projectName + " successfully.");
                           window.location.href = "invite.html";
+                          return;
                         },
                         error: function(error) {
                             alert("Error: " + error.code + " " + error.message);
@@ -48,7 +59,7 @@ function invite(username, projectName) {
                 });
               }
               if (number == 0){
-                alert("Error: Could not invite user to project '" + projectName + "' because you are not a member of that project or user '" + username + "' does not exists.");
+                alert("Error: Could not invite user to project '" + projectName + "' because you are not a member of that project.");
                 return;
               }
             },
@@ -57,13 +68,13 @@ function invite(username, projectName) {
             }
           });
         },
-        error: function(projectName) {
-          alert("Error: Could not find project '" + projectName + "' in database");
+        error: function() {
+          alert("Error: " + error.code + " " + error.message);
         }
       });
     },
-    error: function(username) {
-      alert("Error: Could not find user '" + username + "' in database.");
+    error: function() {
+      alert("Error: " + error.code + " " + error.message);
     }
   });
 }

@@ -32,6 +32,9 @@ function createProject(newProjectName, description){
           }
         });
       }
+      if (number == 1) {
+        alert("Error: Cannot create project that already exists. Try a different project name.")
+      }
     },
     error: function(error){
       alert("Error: " + error.code + " " + error.message);
