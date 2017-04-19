@@ -6,7 +6,7 @@
   color: rgb(219,185,63);
   border: 10px solid black;
   position: absolute;
-  top: 5%;
+  top: 50px;
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%)
@@ -29,7 +29,7 @@
   background-color: white;
   border: 2px solid black;
   position: absolute;
-    top: 45%;
+    top: 350px;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%)
@@ -37,7 +37,7 @@
 
 #spinningBanana {
   position: absolute;
-  top: 25%;
+  top: 200px;
   left: 50%;
   width: 120px;
   height: 120px;
@@ -73,7 +73,7 @@
   color: rgb(219,185,63);
   border: 10px solid black;
   position: absolute;
-  top: 17%;
+  top: 300px;
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%)
@@ -81,7 +81,7 @@
 
 #bananaPicture{
   position: absolute;
-  top: 500px;
+  top: 650px;
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%)
@@ -104,8 +104,8 @@
   background-color: grey;
   border: 2px solid black;
   position: absolute;
-  top: 12%;
-  left: 7%;
+  top: 150px;
+  left: 110px;
     margin-right: -50%;
     transform: translate(-50%, -50%)
 }
@@ -122,7 +122,7 @@
   color: rgb(219,185,63);
   border: 10px solid black;
   position: absolute;
-  top: 10%;
+  top: 80px;
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%)
@@ -138,7 +138,7 @@
   background-color: white;
   border: 2px solid black;
   position: absolute;
-  top: 45%;
+  top: 300px;
   left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%)
@@ -156,7 +156,7 @@
   background-color: white;
   border: 2px solid black;
   position: absolute;
-    top: 45%;
+    top: 360px;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%)
@@ -169,7 +169,7 @@
   color: rgb(219,185,63);
   border: 10px solid black;
   position: absolute;
-  top: 10%;
+  top: 50px;
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%)
@@ -187,7 +187,7 @@
   background-color: white;
   border: 2px solid black;
   position: absolute;
-    top: 45%;
+    top: 380px;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%)
@@ -200,7 +200,7 @@
   color: rgb(219,185,63);
   border: 10px solid black;
   position: absolute;
-  top: 15%;
+  top: 120px;
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%)
@@ -213,7 +213,7 @@
   color: rgb(219,185,63);
   border: 10px solid black;
   position: absolute;
-  top: 13%;
+  top: 110px;
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%)
@@ -229,7 +229,7 @@
   background-color: white;
   border: 2px solid black;
   position: absolute;
-    top: 65%;
+    top: 530px;
     left: 50%;
     margin-right: -50%;
     margin-bottom: 90;
