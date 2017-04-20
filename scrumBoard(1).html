@@ -1,0 +1,66 @@
+<html>
+<head>
+  <base href="/ReigningBananas/">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script type="text/javascript" src="scripts/jquery.js"></script>
+  <script type="text/javascript" src="loadScrum.js"></script>
+  <script src="https://npmcdn.com/parse@1.8.5/dist/parse-latest.js"></script>
+  <script>
+  Parse.initialize("57vlCjkMxDqj7oyYSYLLBflLxuags8IVwSYHGWfW", "V1riV7jyjcsQ1PNeJDMankWvWqVacabgJWYno1S7", "jQ9dOi8WcgLqtHvkkwEqGze7zRpzJtVAWedEGtB3");
+  Parse.serverURL = 'https://parseapi.back4app.com/';
+  </script>
+  <title>Scrum Board</title>
+</head>
+
+<div class="topnav" id="myTopnav">
+  <a href="homepage.html">Home</a>
+  <a href="invite.html">Invite</a>
+  <a href="createProject.html">Project</a>
+</div>
+
+<div ng-app="ScrumApp">
+  <div>
+    <div class="form">
+      <h1>Simple Scrum Board</h1>
+      <input type="text" placeholder="Type Task" id="task" />
+      <button class="button" id="add-button">Add Task</button>
+    </div>
+    <div class="flex">
+      <div class="scrum-board backlog">
+        <h2>Backlog</h2>
+        <div class="input-group overflow">
+          <span>Wash dishes</span>
+          <div class="margin-top-10">
+             <button class="button button-backlog">Backlog</button><button class="button button-progress">In Progress</button><button class="button button-done">Done</button><button class="button button-delete">Delete</button>
+          </div>
+        </div>
+        <div class="input-group overflow">
+          <span>Make bed</span>
+          <div class="margin-top-10">
+            <button class="button button-backlog">Backlog</button><button class="button button-progress">In Progress</button><button class="button button-done">Done</button><button class="button button-delete">Delete</button>
+          </div>
+        </div>
+        <div class="input-group overflow">
+          <span>Cook dinner</span>
+          <div class="margin-top-10">
+            <button class="button button-backlog">Backlog</button><button class="button button-progress">In Progress</button><button class="button button-done">Done</button><button class="button button-delete">Delete</button>
+          </div>
+        </div>
+        <div class="input-group overflow">
+          <span>Ask wife permission to go on trip</span>
+          <div class="margin-top-10">
+            <button class="button button-backlog">Backlog</button><button class="button button-progress">In Progress</button><button class="button button-done">Done</button><button class="button button-delete">Delete</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="scrum-board in-progress">
+        <h2>In progress</h2>
+      </div>
+      <div class="scrum-board done">
+        <h2>Done</h2>
+      </div>
+
+    </div>
+  </div>
+  </html>
