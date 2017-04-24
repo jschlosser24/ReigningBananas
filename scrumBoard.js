@@ -1,8 +1,7 @@
-function loadScrumBoard() {//for all the ___.className, need to make CSS that formats those things
-  var projectId = getVar(window.location.href);
+var projectId = getVar(window.location.href);//global variable for the projectId
 
+function loadScrumBoard() {
   var board = document.getElementById("scrumBoard");
-
   var table = document.createElement("div");
   table.setAttribute("class", "table");
   var tableBody = document.createElement("div");
@@ -158,4 +157,24 @@ function loadScrumBoard() {//for all the ___.className, need to make CSS that fo
 function getVar(str) {
   var point = str.lastIndexOf("=");
   return str.substring(point+1,str.length);
+}
+
+function reorder(item) {
+  var newItem = Parse.Object.extend("ScrumBoardItems");
+  newItem = item;
+  newItem.set("row", 0);
+  newItem.save();
+  var query = new Parse.Query("ScrumBoardItems");
+  query.equalTo("projectId", projectId).equalTo("column", item.get("column")).notEqualTo("objectId", item.id);
+  query.find({
+    success: function(items) {
+      for (var i = 0; i < items.length; i++) {
+        var newRow = items[i].get("row") + 1;
+        var editedItem =  Parse.Object.extend("ScrumBoardItems");
+        editedItem = items[i];
+        editedItem.set("row", newRow);
+        editedItem.save();
+      }
+    }
+  });
 }
