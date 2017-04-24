@@ -28,7 +28,7 @@ function getProjects() {
             var text = document.createTextNode(projectName);
             link.appendChild(text);
             link.title = projectName;
-            link.href = "homepage.html";  //link will have to go to specific project page
+            link.href = "scrumBoard.html?project=" + project.id;  //link will have to go to specific project page
             entry.appendChild(link);
             listProjects.appendChild(entry);
           },

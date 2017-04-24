@@ -16,7 +16,7 @@
   background-image: url("http://cdn.pcwallart.com/images/blue-gradient-background-wallpaper-1.jpg");
   background-repeat: no-repeat;
   background-size: cover;
- /*background-color: rgb(156,245,255);*/
+  /*background-color: rgb(156,245,255);*/
 }
 
 #loginbox{
@@ -29,10 +29,10 @@
   background-color: white;
   border: 2px solid black;
   position: absolute;
-    top: 350px;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%)
+  top: 350px;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
 }
 
 #spinningBanana {
@@ -91,7 +91,7 @@
   background-image: url("http://cdn.pcwallart.com/images/blue-gradient-background-wallpaper-1.jpg");
   background-repeat: no-repeat;
   background-size: cover;
- /*background-color: rgb(156,245,255);*/
+  /*background-color: rgb(156,245,255);*/
 }
 
 #projectList{
@@ -106,13 +106,13 @@
   position: absolute;
   top: 150px;
   left: 110px;
-    margin-right: -50%;
-    transform: translate(-50%, -50%)
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
 }
 
 /*Invite page CSS*/
 #inviteBody{
-    background-image: url("http://cdn.pcwallart.com/images/blue-gradient-background-wallpaper-1.jpg");
+  background-image: url("http://cdn.pcwallart.com/images/blue-gradient-background-wallpaper-1.jpg");
 }
 
 #inviteHeader{
@@ -140,8 +140,8 @@
   position: absolute;
   top: 300px;
   left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%)
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
 }
 
 /* Style for createaccount*/
@@ -156,10 +156,10 @@
   background-color: white;
   border: 2px solid black;
   position: absolute;
-    top: 360px;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%)
+  top: 360px;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
 }
 
 #createAccountHeader{
@@ -187,10 +187,10 @@
   background-color: white;
   border: 2px solid black;
   position: absolute;
-    top: 380px;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%)
+  top: 380px;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
 }
 
 #createProjectHeader{
@@ -229,50 +229,50 @@
   background-color: white;
   border: 2px solid black;
   position: absolute;
-    top: 530px;
-    left: 50%;
-    margin-right: -50%;
-    margin-bottom: 90;
-    transform: translate(-50%, -50%)
+  top: 530px;
+  left: 50%;
+  margin-right: -50%;
+  margin-bottom: 90;
+  transform: translate(-50%, -50%)
 }
 
 /* Dropdown Button */
 .dropbtn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
 }
 
 /* Dropdown button on hover & focus */
 .dropbtn:hover, .dropbtn:focus {
-    background-color: #3e8e41;
+  background-color: #3e8e41;
 }
 
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
-    position: relative;
-    display: inline-block;
+  position: relative;
+  display: inline-block;
 }
 
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
 }
 
 /* Links inside the dropdown */
 .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
 }
 
 /* Change color of dropdown links on hover */
@@ -307,4 +307,46 @@
 .topnav a.active {
   background-color: #4CAF50;
   color: white;
+}
+
+#scrumBoardBody{
+  background-image: url("http://cdn.pcwallart.com/images/blue-gradient-background-wallpaper-1.jpg");
+}
+
+#scrumBoard {
+  color: lightgrey;
+}
+
+div.table {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+div.tableRow {
+  display: table-row;
+}
+div.tableHeader {
+  display: table-cell;
+  font-weight: bold;
+  background-color: rgb(200,25,25);
+  padding: 3px 10px;
+  border: 3px solid #999999;
+}
+div.tableCell {
+  display: table-cell;
+  background-color: rgb(25, 100, 25);
+  padding: 3px 10px;
+  border: 1px solid #999999;
+}
+div.tableFoot {
+  display: table-footer-group;
+  font-weight: bold;
+  background-color: #ddd;
+}
+div.tableBody {
+  display: table-row-group;
+}
+
+div.tableHiddenCell{
+  visibility: hidden
 }
