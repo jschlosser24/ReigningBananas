@@ -1,7 +1,7 @@
 function addingPBL(storyDescription, role, functionality, val, acceptanceCriteria, size){
   var user = Parse.User.current();
 
-  var description = stortDescription.value;
+  var description = storyDescription.value;
   var acceptance = acceptanceCriteria.value
 
   var pbl = new Parse.Object("ScrumBoardItems");

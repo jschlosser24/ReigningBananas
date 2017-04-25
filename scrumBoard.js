@@ -58,14 +58,16 @@ function loadScrumBoard() {
             if (item == null) {
               var cell = document.createElement("div");
               cell.setAttribute("class", "tableHiddenCell");
+              var cellText = "test0"; // replace "test" with the text that you want
+              cell.innerHTML = cellText;
               row.appendChild(cell);
             } else {
               var cell = document.createElement("div");
               cell.setAttribute("class", "tableCell");
               var cellText = "Description: " + item.get("description") +
-              "<br>As a " + item.get("role") + " I want " + item.get("functionality") + " so I " + item.get("value") +
-              "<br>Acceptance criteria: " + item.get("acceptanceCriteria") +
-              "<br>Size: " + item.get("size");
+              "<br><br>As a " + item.get("role") + " I want " + item.get("functionality") + " so I " + item.get("value") +
+              "<br><br>Acceptance criteria: " + item.get("acceptanceCriteria") +
+              "<br><br>Size: " + item.get("size");
               cell.innerHTML = cellText;
               row.appendChild(cell);
             }
@@ -79,7 +81,9 @@ function loadScrumBoard() {
         success: function(item) {
           if (item == null) {
             var cell = document.createElement("div");
-            cell.setAttribute("class", "tableHiddenCell");
+            cell.setAttribute("class", "tableCell");
+            var cellText = "test1"; // replace "test" with the text that you want
+            cell.innerHTML = cellText;
             row.appendChild(cell);
           } else {
             var cell = document.createElement("div");
@@ -98,7 +102,9 @@ function loadScrumBoard() {
         success: function(item) {
           if (item == null) {
             var cell = document.createElement("div");
-            cell.setAttribute("class", "tableHiddenCell");
+            cell.setAttribute("class", "tableCell");
+            var cellText = "test2"; // replace "test" with the text that you want
+            cell.innerHTML = cellText;
             row.appendChild(cell);
           } else {
             var cell = document.createElement("div");
@@ -117,7 +123,9 @@ function loadScrumBoard() {
         success: function(item) {
           if (item == null) {
             var cell = document.createElement("div");
-            cell.setAttribute("class", "tableHiddenCell");
+            cell.setAttribute("class", "tableCell");
+            var cellText = "test3"; // replace "test" with the text that you want
+            cell.innerHTML = cellText;
             row.appendChild(cell);
           } else {
             var cell = document.createElement("div");
@@ -136,7 +144,9 @@ function loadScrumBoard() {
         success: function(item) {
           if (item == null) {
             var cell = document.createElement("div");
-            cell.setAttribute("class", "tableHiddenCell");
+            cell.setAttribute("class", "tableCell");
+            var cellText = "test4"; // replace "test" with the text that you want
+            cell.innerHTML = cellText;
             row.appendChild(cell);
           } else {
             var cell = document.createElement("div");

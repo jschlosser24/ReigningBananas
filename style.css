@@ -337,6 +337,8 @@ div.tableCell {
   background-color: rgb(25, 100, 25);
   padding: 3px 10px;
   border: 1px solid #999999;
+  width: auto;
+  height: auto;
 }
 div.tableFoot {
   display: table-footer-group;
