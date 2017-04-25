@@ -33,7 +33,7 @@ Enter the information for the new product backlog item:
     So I  <input type="text" id="val" placeholder="value"/><br>
     <br>
     Acceptance Criteria:<br>
-    <textarea class="form-control" cols="60" rows="7"name="acceptancCriteria" placeholder="Acceptance Criteria"></textarea><br>
+    <textarea id="acceptanceCriteria" class="form-control" cols="60" rows="7" name="acceptancCriteria" placeholder="Acceptance Criteria"></textarea><br>
     Size:<br>
     <form action="">
       <input type="radio" name="size" value="S"> Small<br>
@@ -41,7 +41,7 @@ Enter the information for the new product backlog item:
       <input type="radio" name="size" value="L"> Large<br>
       <input type="radio" name="size" value="XL"> Extra Large
     </form>
-    <input type="submit" id="pBLAddButton" onclick="addingPBL(storyDescription, role.value, functionality.value, val.value, acceptanceCriteria, size.value)" value="Submit Item"/>
+    <input type="submit" id="pBLAddButton" onclick="addingPBL(storyDescription.value, role.value, functionality.value, val.value, acceptanceCriteria.value, size.value)" value="Submit Item"/>
     <br><br>
     <input type="submit" id="goBackButton" onclick="window.location.href='homepage.html'" value="Go back to the homepage"/>
 

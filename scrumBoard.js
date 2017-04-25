@@ -36,11 +36,9 @@ function loadScrumBoard() {
   tableBody.appendChild(headerRow);
 
   var query = new Parse.Query("ScrumBoardItems");
-  query.equalTo("projectId", projectId).ascending("column,row");
+  query.equalTo("projectId", projectId);
   query.find({
     success: function(sb) {
-      board.innerHTML = JSON.stringify(sb);
-
       var totalRow = 0;
       for (var j = 0; j < sb.length; j++) {
         if (sb[j].get("row") > totalRow) {
@@ -65,9 +63,9 @@ function loadScrumBoard() {
               var cell = document.createElement("div");
               cell.setAttribute("class", "tableCell");
               var cellText = "Description: " + item.get("description") +
-              "\n\nAs a " + item.get("role") + " I want " + item.get("functionality") + " so I " + item.get("value") +
-              "\n\nAcceptance criteria: " + item.get("acceptanceCriteria") +
-              "\n\nSize: " + item.get("size");
+              "<br>As a " + item.get("role") + " I want " + item.get("functionality") + " so I " + item.get("value") +
+              "<br>Acceptance criteria: " + item.get("acceptanceCriteria") +
+              "<br>Size: " + item.get("size");
               cell.innerHTML = cellText;
               row.appendChild(cell);
             }

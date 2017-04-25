@@ -4,20 +4,19 @@ function addingPBL(storyDescription, role, functionality, val, acceptanceCriteri
   var description = stortDescription.value;
   var acceptance = acceptanceCriteria.value
 
-  var pbl = new Parse.Object("ProductBacklog");
+  var pbl = new Parse.Object("ScrumBoardItems");
 
-  pbl.save({
+  pbl.save(null, {
     success: function() {
-      pbl.set("Description", description);
-      pbl.set("Role", role);
-      pbl.set("Functionality", functionality);
-      pbl.set("Value", val);
-      pbl.set("AcceptanceCriteria", acceptance);
-      pbl.set("Size", size);
-      pbl.set("AddedBy", user.id);
+      pbl.set("description", description);
+      pbl.set("role", role);
+      pbl.set("functionality", functionality);
+      pbl.set("value", val);
+      pbl.set("acceptanceCriteria", acceptance);
+      pbl.set("size", size);
+      pbl.set("addedBy", user.id);
     }, error: function(error) {
-      alert("what the fuck");
-      alert(error);
+      alert("Error: " + error.code + " " + error.message);
     }
   });
 }
