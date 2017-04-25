@@ -11,6 +11,7 @@ function invite(username, projectName) {
     success: function(count){
       if (count == 0) {
         alert("Error: user '" + username + "' does not exist.");
+        return;
       }
     },
     error: function() {
@@ -22,6 +23,17 @@ function invite(username, projectName) {
       user = foundUser;
       var query2 = new Parse.Query("Projects");
       query2.equalTo("name", projectName);
+      query2.count({
+        success: function(count){
+          if (count == 0) {
+            alert("Error: project '" + projectName + "' does not exist.");
+            return;
+          }
+        },
+        error: function() {
+          alert("Error: " + error.code + " " + error.message);
+        }
+      });
       query2.first({
         success: function(foundProject) {
           project = foundProject;
