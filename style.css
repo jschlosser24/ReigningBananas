@@ -331,6 +331,8 @@ div.tableHeader {
   background-color: rgb(200,25,25);
   padding: 3px 10px;
   border: 3px solid #999999;
+  width: auto;
+  height: auto;
 }
 div.tableCell {
   display: table-cell;
@@ -350,5 +352,9 @@ div.tableBody {
 }
 
 div.tableHiddenCell{
-  visibility: hidden
+  display: table-cell;
+  padding: 3px 10px;
+  border: 1px solid #999999;
+  width: auto;
+  height: auto;
 }

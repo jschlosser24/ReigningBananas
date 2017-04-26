@@ -46,123 +46,122 @@ function loadScrumBoard() {
         }
       }
 
+      var cell0 = document.createElement("div");
+      var cell1 = document.createElement("div");
+      var cell2 = document.createElement("div");
+      var cell3 = document.createElement("div");
+      var cell4 = document.createElement("div");
+
       for (var i = 0; i <= totalRow; i++){
         var row = document.createElement("div");
         row.setAttribute("class", "tableRow");
 
-        // pbl items
-        var pblQuery = new Parse.Query("ScrumBoardItems");
-        pblQuery.equalTo("projectId", projectId).equalTo("column", 0).equalTo("row", i);
-        pblQuery.first({
-          success: function(item) {
-            if (item == null) {
-              var cell = document.createElement("div");
-              cell.setAttribute("class", "tableHiddenCell");
-              var cellText = "test0"; // replace "test" with the text that you want
-              cell.innerHTML = cellText;
-              row.appendChild(cell);
-            } else {
-              var cell = document.createElement("div");
-              cell.setAttribute("class", "tableCell");
-              var cellText = "Description: " + item.get("description") +
-              "<br><br>As a " + item.get("role") + " I want " + item.get("functionality") + " so I " + item.get("value") +
-              "<br><br>Acceptance criteria: " + item.get("acceptanceCriteria") +
-              "<br><br>Size: " + item.get("size");
-              cell.innerHTML = cellText;
-              row.appendChild(cell);
-            }
-          }
-        });
+        for (var currentColumn = 0; currentColumn <= 4; currentColumn++){
+          switch (currentColumn) {
+            case 0:
+            // pbl items
+            var pblQuery = new Parse.Query("ScrumBoardItems");
+            pblQuery.equalTo("projectId", projectId).equalTo("column", 0).equalTo("row", i);
+            pblQuery.first({
+              success: function(item) {
+                if (item == null) {
+                  cell0.setAttribute("class", "tableHiddenCell");
+                } else {
+                  cell0.setAttribute("class", "tableCell");
+                  var cellText = "Description: " + item.get("description") +
+                  "<br><br>As a " + item.get("role") + " I want " + item.get("functionality") + " so I " + item.get("value") +
+                  "<br><br>Acceptance criteria: " + item.get("acceptanceCriteria") +
+                  "<br><br>Size: " + item.get("size");
+                  cell0.innerHTML = cellText;
+                }
+              }
+            });
+            break;
 
-      // sbl items
-      var sblQuery = new Parse.Query("ScrumBoardItems");
-      sblQuery.equalTo("projectId", projectId).equalTo("column", 1).equalTo("row", i);
-      sblQuery.first({
-        success: function(item) {
-          if (item == null) {
-            var cell = document.createElement("div");
-            cell.setAttribute("class", "tableCell");
-            var cellText = "test1"; // replace "test" with the text that you want
-            cell.innerHTML = cellText;
-            row.appendChild(cell);
-          } else {
-            var cell = document.createElement("div");
-            cell.setAttribute("class", "tableCell");
-            var cellText = "test1"; // replace "test" with the text that you want
-            cell.innerHTML = cellText;
-            row.appendChild(cell);
+            case 1:
+            // sbl items
+            var sblQuery = new Parse.Query("ScrumBoardItems");
+            sblQuery.equalTo("projectId", projectId).equalTo("column", 1).equalTo("row", i);
+            sblQuery.first({
+              success: function(item) {
+                var childBefore = row.firstChild;
+                if (item == null) {
+                  cell1.setAttribute("class", "tableHiddenCell");
+                } else {
+                  cell1.setAttribute("class", "tableCell");
+                  var cellText = "Description: " + item.get("description") +
+                  "<br><br>As a " + item.get("role") + " I want " + item.get("functionality") + " so I " + item.get("value") +
+                  "<br><br>Acceptance criteria: " + item.get("acceptanceCriteria") +
+                  "<br><br>Size: " + item.get("size");
+                  cell1.innerHTML = cellText;
+                }
+              }
+            });
+            break;
+
+            case 2:
+            // todo items
+            var todoQuery = new Parse.Query("ScrumBoardItems");
+            todoQuery.equalTo("projectId", projectId).equalTo("column", 2).equalTo("row", i);
+            todoQuery.first({
+              success: function(item) {
+                if (item == null) {
+                  cell2.setAttribute("class", "tableHiddenCell");
+                } else {
+                  cell2.setAttribute("class", "tableCell");
+                  var cellText = "test2"; // replace "test" with the text that you want
+                  cell2.innerHTML = cellText;
+                }
+              }
+            });
+            break;
+
+            case 3:
+            // doing items
+            var doingQuery = new Parse.Query("ScrumBoardItems");
+            doingQuery.equalTo("projectId", projectId).equalTo("column", 3).equalTo("row", i);
+            doingQuery.first({
+              success: function(item) {
+                if (item == null) {
+                  cell3.setAttribute("class", "tableHiddenCell");
+                } else {
+                  cell3.setAttribute("class", "tableCell");
+                  var cellText = "test3"; // replace "test" with the text that you want
+                  cell3.innerHTML = cellText;
+                }
+              }
+            });
+            break;
+
+            case 4:
+            // complete items
+            var completeQuery = new Parse.Query("ScrumBoardItems");
+            completeQuery.equalTo("projectId", projectId).equalTo("column", 4).equalTo("row", i);
+            completeQuery.first({
+              success: function(item) {
+                if (item == null) {
+                  cell4.setAttribute("class", "tableHiddenCell");
+                } else {
+                  cell4.setAttribute("class", "tableCell");
+                  var cellText = "test4"; // replace "test" with the text that you want
+                  cell4.innerHTML = cellText;
+                }
+              }
+            });
+            break;
           }
         }
-      });
-
-      // todo items
-      var todoQuery = new Parse.Query("ScrumBoardItems");
-      todoQuery.equalTo("projectId", projectId).equalTo("column", 2).equalTo("row", i);
-      todoQuery.first({
-        success: function(item) {
-          if (item == null) {
-            var cell = document.createElement("div");
-            cell.setAttribute("class", "tableCell");
-            var cellText = "test2"; // replace "test" with the text that you want
-            cell.innerHTML = cellText;
-            row.appendChild(cell);
-          } else {
-            var cell = document.createElement("div");
-            cell.setAttribute("class", "tableCell");
-            var cellText = "test2"; // replace "test" with the text that you want
-            cell.innerHTML = cellText;
-            row.appendChild(cell);
-          }
-        }
-      });
-
-      // doing items
-      var doingQuery = new Parse.Query("ScrumBoardItems");
-      doingQuery.equalTo("projectId", projectId).equalTo("column", 3).equalTo("row", i);
-      doingQuery.first({
-        success: function(item) {
-          if (item == null) {
-            var cell = document.createElement("div");
-            cell.setAttribute("class", "tableCell");
-            var cellText = "test3"; // replace "test" with the text that you want
-            cell.innerHTML = cellText;
-            row.appendChild(cell);
-          } else {
-            var cell = document.createElement("div");
-            cell.setAttribute("class", "tableCell");
-            var cellText = "test3"; // replace "test" with the text that you want
-            cell.innerHTML = cellText;
-            row.appendChild(cell);
-          }
-        }
-      });
-
-      // complete items
-      var completeQuery = new Parse.Query("ScrumBoardItems");
-      completeQuery.equalTo("projectId", projectId).equalTo("column", 4).equalTo("row", i);
-      completeQuery.first({
-        success: function(item) {
-          if (item == null) {
-            var cell = document.createElement("div");
-            cell.setAttribute("class", "tableCell");
-            var cellText = "test4"; // replace "test" with the text that you want
-            cell.innerHTML = cellText;
-            row.appendChild(cell);
-          } else {
-            var cell = document.createElement("div");
-            cell.setAttribute("class", "tableCell");
-            var cellText = "test4"; // replace "test" with the text that you want
-            cell.innerHTML = cellText;
-            row.appendChild(cell);
-          }
-        }
-      });
-      tableBody.appendChild(row);
+        row.appendChild(cell0);
+        row.appendChild(cell1);
+        row.appendChild(cell2);
+        row.appendChild(cell3);
+        row.appendChild(cell4);
+        tableBody.appendChild(row);
+      }
+      table.appendChild(tableBody);
+      board.appendChild(table);
     }
-    table.appendChild(tableBody);
-    board.appendChild(table);
-  }
-});
+  });
 }
 
 function getVar(str) {
@@ -170,22 +169,19 @@ function getVar(str) {
   return str.substring(point+1,str.length);
 }
 
-function reorder(item) {
+function reorder(item, dir) {
+  var oldRow = item.get("row");
   var newItem = Parse.Object.extend("ScrumBoardItems");
   newItem = item;
-  newItem.set("row", 0);
+  newItem.set("row", oldRow + dir);
   newItem.save();
   var query = new Parse.Query("ScrumBoardItems");
-  query.equalTo("projectId", projectId).equalTo("column", item.get("column")).notEqualTo("objectId", item.id);
-  query.find({
-    success: function(items) {
-      for (var i = 0; i < items.length; i++) {
-        var newRow = items[i].get("row") + 1;
-        var editedItem =  Parse.Object.extend("ScrumBoardItems");
-        editedItem = items[i];
-        editedItem.set("row", newRow);
-        editedItem.save();
-      }
+  query.equalTo("projectId", projectId).equalTo("column", item.get("column")).equalTo("row", oldRow + dir).notEqualTo("objectId", item.id);
+  query.first({
+    success: function(switchItem) {
+      switchItem.set("row", oldRow);
+      switchItem.save();
     }
   });
+  location.reload();
 }
