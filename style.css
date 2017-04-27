@@ -309,15 +309,97 @@
   color: white;
 }
 
+/*scrum board styling*/
+
 #scrumBoardBody{
   background-image: url("http://cdn.pcwallart.com/images/blue-gradient-background-wallpaper-1.jpg");
 }
 
-#scrumBoard {
+a {
+     color: rgb(255,140,0);
+}
+
+body{
+  overflow: auto;
+}
+
+#pblList {
+  position: absolute;
+  left: 0px;
+  top: 100px;
+  width: 240px;
+}
+#sblList {
+  position: absolute;
+  left: 263px;
+  top: 100px;
+  width: 240px;
+}
+#todoList {
+  position: absolute;
+  left: 526px;
+  top: 100px;
+  width: 240px;
+}
+#doingList {
+  position: absolute;
+  left: 789px;
+  top: 100px;
+  width: 240px;
+}
+#completeList {
+  position: absolute;
+  left: 1052px;
+  top: 100px;
+  width: 240px;
+}
+.table{
+  background: none;
+}
+.table ul{
+  float: left;
+  margin: 0px;
+  padding: 3px 10px;
+}
+.table ul.even{
+  border: 2px solid #000000;
+  background: rgb(25, 100, 25);
+  overflow-y: auto;
+}
+.table ul.odd{
+  border: 2px solid #000000;
+  background: rgb(2, 145, 121);
+  overflow-y: auto;
+}
+.table ul li{
+  list-style: none;
+  padding: 4px 9px;
+}
+.table ul li.title{
+  font-weight: bold;
+  font-size: 25px;
+  background: rgb(175,25,25);
+  color: lightgrey;
+}
+.table ul li.add{
+  background: rgb(100,100,100);
+}
+.table ul li.item{
+  border: 2px solid rgb(50,50,50);
+  background: rgb(14,123,73);
   color: lightgrey;
 }
 
-div.table {
+#board {
+  color: white;
+}
+
+/*Used for scrumBoardOther files*/
+/*#scrumBoard {
+  color: lightgrey;
+}*/
+
+/*div.table {
   display: table;
   table-layout: fixed;
   width: 100%;
@@ -339,8 +421,6 @@ div.tableCell {
   background-color: rgb(25, 100, 25);
   padding: 3px 10px;
   border: 1px solid #999999;
-  width: auto;
-  height: auto;
 }
 div.tableFoot {
   display: table-footer-group;
@@ -355,6 +435,4 @@ div.tableHiddenCell{
   display: table-cell;
   padding: 3px 10px;
   border: 1px solid #999999;
-  width: auto;
-  height: auto;
-}
+}*/

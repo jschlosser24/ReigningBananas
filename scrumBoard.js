@@ -1,165 +1,88 @@
 var projectId = getVar(window.location.href);//global variable for the projectId
 
 function loadScrumBoard() {
-  var board = document.getElementById("scrumBoard");
-  var table = document.createElement("div");
-  table.setAttribute("class", "table");
-  var tableBody = document.createElement("div");
-  tableBody.setAttribute("class", "tableBody");
-  var headerRow = document.createElement("div");
-  headerRow.setAttribute("class", "tableRow");
-
-  var pblHeader = document.createElement("div");
-  pblHeader.setAttribute("class", "tableHeader");
-  pblHeader.innerHTML = "Product Backlog";
-  headerRow.appendChild(pblHeader);
-
-  var sblHeader = document.createElement("div");
-  sblHeader.setAttribute("class", "tableHeader");
-  sblHeader.innerHTML = "Sprint Backlog";
-  headerRow.appendChild(sblHeader);
-
-  var todoHeader = document.createElement("div");
-  todoHeader.setAttribute("class", "tableHeader");
-  todoHeader.innerHTML = "TODO";
-  headerRow.appendChild(todoHeader);
-
-  var doingHeader = document.createElement("div");
-  doingHeader.setAttribute("class", "tableHeader");
-  doingHeader.innerHTML = "Doing";
-  headerRow.appendChild(doingHeader);
-
-  var completeHeader = document.createElement("div");
-  completeHeader.setAttribute("class", "tableHeader");
-  completeHeader.innerHTML = "Complete";
-  headerRow.appendChild(completeHeader);
-  tableBody.appendChild(headerRow);
+  var board = document.getElementById("board");
+  var pblList = document.getElementById("pblList");
+  var sblList = document.getElementById("sblList");
+  var todoList = document.getElementById("todoList");
+  var doingList = document.getElementById("doingList");
+  var completeList = document.getElementById("completeList");
 
   var query = new Parse.Query("ScrumBoardItems");
-  query.equalTo("projectId", projectId);
+  query.equalTo("projectId", projectId).ascending("row");
   query.find({
     success: function(sb) {
-      var totalRow = 0;
-      for (var j = 0; j < sb.length; j++) {
-        if (sb[j].get("row") > totalRow) {
-          totalRow = sb[j].get("row");
+      for (var i = 0; i < sb.length; i++) {
+        var moveUp = document.createElement("button");
+        moveUp.innerHTML = "Move up";
+        var moveDown = document.createElement("button");
+        moveDown.innerHTML = "Move down";
+        var item = sb[i];
+        if (item.get("column") == 0){
+          var listItem = document.createElement("li");
+          listItem.setAttribute("class", "item");
+          listItem.innerHTML = "Description: " + item.get("description") +
+          "<br><br>As a " + item.get("role") + " I want " + item.get("functionality") + " so I " + item.get("value") +
+          "<br><br>Acceptance criteria: " + item.get("acceptanceCriteria") +
+          "<br><br>Size: " + item.get("size") + "<br><br>";
+          moveUp.item = item;
+          moveDown.item = item;
+          moveUp.onclick = buttonUp;
+          moveDown.onclick = buttonDown;
+          listItem.appendChild(moveUp);
+          listItem.appendChild(moveDown);
+          pblList.appendChild(listItem);
+        } else if (item.get("column") == 1){
+          var listItem = document.createElement("li");
+          listItem.setAttribute("class", "item");
+          listItem.innerHTML = "Description: " + item.get("description") +
+          "<br><br>As a " + item.get("role") + " I want " + item.get("functionality") + " so I " + item.get("value") +
+          "<br><br>Acceptance criteria: " + item.get("acceptanceCriteria") +
+          "<br><br>Size: " + item.get("size") + "<br><br>";
+          moveUp.item = item;
+          moveDown.item = item;
+          moveUp.onclick = buttonUp;
+          moveDown.onclick = buttonDown;
+          listItem.appendChild(moveUp);
+          listItem.appendChild(moveDown);
+          sblList.appendChild(listItem);
+        } else if (item.get("column") == 2){
+          var listItem = document.createElement("li");
+          listItem.setAttribute("class", "item");
+          listItem.innerHTML = "Task"; // enter info for task item
+          moveUp.item = item;
+          moveDown.item = item;
+          moveUp.onclick = buttonUp;
+          moveDown.onclick = buttonDown;
+          listItem.appendChild(moveUp);
+          listItem.appendChild(moveDown);
+          todoList.appendChild(listItem);
+        } else if (item.get("column") == 3){
+          var listItem = document.createElement("li");
+          listItem.setAttribute("class", "item");
+          listItem.innerHTML = "Task"; // enter info for task item
+          moveUp.item = item;
+          moveDown.item = item;
+          moveUp.onclick = buttonUp;
+          moveDown.onclick = buttonDown;
+          listItem.appendChild(moveUp);
+          listItem.appendChild(moveDown);
+          doingList.appendChild(listItem);
+        } else if (item.get("column") == 4){
+          var listItem = document.createElement("li");
+          listItem.setAttribute("class", "item");
+          listItem.innerHTML = "Task"; // enter info for task item
+          moveUp.item = item;
+          moveDown.item = item;
+          moveUp.onclick = buttonUp;
+          moveDown.onclick = buttonDown;
+          listItem.appendChild(moveUp);
+          listItem.appendChild(moveDown);
+          completeList.appendChild(listItem);
+        } else {
+          alert("Task with description: '" + item.get("description") + "' is not in a available column.")
         }
       }
-
-      var cell0 = document.createElement("div");
-      var cell1 = document.createElement("div");
-      var cell2 = document.createElement("div");
-      var cell3 = document.createElement("div");
-      var cell4 = document.createElement("div");
-
-      for (var i = 0; i <= totalRow; i++){
-        var row = document.createElement("div");
-        row.setAttribute("class", "tableRow");
-
-        for (var currentColumn = 0; currentColumn <= 4; currentColumn++){
-          switch (currentColumn) {
-            case 0:
-            // pbl items
-            var pblQuery = new Parse.Query("ScrumBoardItems");
-            pblQuery.equalTo("projectId", projectId).equalTo("column", 0).equalTo("row", i);
-            pblQuery.first({
-              success: function(item) {
-                if (item == null) {
-                  cell0.setAttribute("class", "tableHiddenCell");
-                } else {
-                  cell0.setAttribute("class", "tableCell");
-                  var cellText = "Description: " + item.get("description") +
-                  "<br><br>As a " + item.get("role") + " I want " + item.get("functionality") + " so I " + item.get("value") +
-                  "<br><br>Acceptance criteria: " + item.get("acceptanceCriteria") +
-                  "<br><br>Size: " + item.get("size");
-                  cell0.innerHTML = cellText;
-                }
-              }
-            });
-            break;
-
-            case 1:
-            // sbl items
-            var sblQuery = new Parse.Query("ScrumBoardItems");
-            sblQuery.equalTo("projectId", projectId).equalTo("column", 1).equalTo("row", i);
-            sblQuery.first({
-              success: function(item) {
-                var childBefore = row.firstChild;
-                if (item == null) {
-                  cell1.setAttribute("class", "tableHiddenCell");
-                } else {
-                  cell1.setAttribute("class", "tableCell");
-                  var cellText = "Description: " + item.get("description") +
-                  "<br><br>As a " + item.get("role") + " I want " + item.get("functionality") + " so I " + item.get("value") +
-                  "<br><br>Acceptance criteria: " + item.get("acceptanceCriteria") +
-                  "<br><br>Size: " + item.get("size");
-                  cell1.innerHTML = cellText;
-                }
-              }
-            });
-            break;
-
-            case 2:
-            // todo items
-            var todoQuery = new Parse.Query("ScrumBoardItems");
-            todoQuery.equalTo("projectId", projectId).equalTo("column", 2).equalTo("row", i);
-            todoQuery.first({
-              success: function(item) {
-                if (item == null) {
-                  cell2.setAttribute("class", "tableHiddenCell");
-                } else {
-                  cell2.setAttribute("class", "tableCell");
-                  var cellText = "test2"; // replace "test" with the text that you want
-                  cell2.innerHTML = cellText;
-                }
-              }
-            });
-            break;
-
-            case 3:
-            // doing items
-            var doingQuery = new Parse.Query("ScrumBoardItems");
-            doingQuery.equalTo("projectId", projectId).equalTo("column", 3).equalTo("row", i);
-            doingQuery.first({
-              success: function(item) {
-                if (item == null) {
-                  cell3.setAttribute("class", "tableHiddenCell");
-                } else {
-                  cell3.setAttribute("class", "tableCell");
-                  var cellText = "test3"; // replace "test" with the text that you want
-                  cell3.innerHTML = cellText;
-                }
-              }
-            });
-            break;
-
-            case 4:
-            // complete items
-            var completeQuery = new Parse.Query("ScrumBoardItems");
-            completeQuery.equalTo("projectId", projectId).equalTo("column", 4).equalTo("row", i);
-            completeQuery.first({
-              success: function(item) {
-                if (item == null) {
-                  cell4.setAttribute("class", "tableHiddenCell");
-                } else {
-                  cell4.setAttribute("class", "tableCell");
-                  var cellText = "test4"; // replace "test" with the text that you want
-                  cell4.innerHTML = cellText;
-                }
-              }
-            });
-            break;
-          }
-        }
-        row.appendChild(cell0);
-        row.appendChild(cell1);
-        row.appendChild(cell2);
-        row.appendChild(cell3);
-        row.appendChild(cell4);
-        tableBody.appendChild(row);
-      }
-      table.appendChild(tableBody);
-      board.appendChild(table);
     }
   });
 }
@@ -169,19 +92,68 @@ function getVar(str) {
   return str.substring(point+1,str.length);
 }
 
-function reorder(item, dir) {
-  var oldRow = item.get("row");
-  var newItem = Parse.Object.extend("ScrumBoardItems");
-  newItem = item;
-  newItem.set("row", oldRow + dir);
-  newItem.save();
-  var query = new Parse.Query("ScrumBoardItems");
-  query.equalTo("projectId", projectId).equalTo("column", item.get("column")).equalTo("row", oldRow + dir).notEqualTo("objectId", item.id);
-  query.first({
-    success: function(switchItem) {
-      switchItem.set("row", oldRow);
-      switchItem.save();
+function buttonUp() {
+  var change = true;
+  var oldRow = this.item.get("row");
+  var newRow = oldRow - 1;
+  if (newRow >= 0) {
+    var query = new Parse.Query("ScrumBoardItems");
+    query.equalTo("projectId", projectId).equalTo("column", this.item.get("column")).equalTo("row", newRow);
+    query.first({
+      success: function(switchItem) {
+        if (switchItem == null){
+          change = false;
+        } else {
+          switchItem.set("row", oldRow);
+          switchItem.save();
+        }
+      }
+    });
+    if (change) {
+      this.item.set("row", newRow);
+      this.item.save();
+    }
+  } else {
+    alert("Cannot move this item any further up");
+    return;
+  }
+  alert("BEFORE CONTINUING EDITING: Refresh the page for the changes to take effect.");
+}
+
+function buttonDown() {
+  var change = true;
+  var tempItem = this.item;
+  var column = tempItem.get("column");
+  var oldRow = tempItem.get("row");
+  var newRow = oldRow + 1;
+  var maxRow = 1;
+  var query2 = new Parse.Query("ScrumBoardItems");
+  query2.equalTo("projectId", projectId).equalTo("column", column).descending("row");
+  query2.first({
+    success: function(maxItem) {
+      maxRow = maxItem.get("row");
+      if (newRow <= maxRow) {
+        var query = new Parse.Query("ScrumBoardItems");
+        query.equalTo("projectId", projectId).equalTo("column", column).equalTo("row", newRow);
+        query.first({
+          success: function(switchItem) {
+            if (switchItem == null){
+              change = false;
+            } else {
+              switchItem.set("row", oldRow);
+              switchItem.save();
+            }
+          }
+        });
+        if (change) {
+          tempItem.set("row", newRow);
+          tempItem.save();
+        }
+      } else {
+        alert("Cannot move this item any further down");
+        return;
+      }
     }
   });
-  location.reload();
+  alert("BEFORE CONTINUING EDITING: Refresh the page for the changes to take effect.");
 }
