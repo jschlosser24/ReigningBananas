@@ -1,7 +1,7 @@
 function getName() {
   var currentUser = Parse.User.current();
-  if (currentUser.get("firstName") != null) {
-    if (currentUser.get("lastName") != null) {
+  if (currentUser.get("firstName") != "#empty#") {
+    if (currentUser.get("lastName") != "#empty#") {
       document.getElementById("nameText").innerHTML = currentUser.get("firstName") + " " + currentUser.get("lastName") + "!";
     } else {
       document.getElementById("nameText").innerHTML = currentUser.get("firstName") + "!";

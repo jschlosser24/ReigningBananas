@@ -1,4 +1,8 @@
 function createProject(newProjectName, description){
+  if (newProjectName.length == 0) {
+    alert("Error: Project name required.");
+    return;
+  }
 
   var project = new Parse.Object("Projects");
   project.set("name", newProjectName);

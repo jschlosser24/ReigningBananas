@@ -2,15 +2,15 @@ function createAccount(username, password, firstName, lastName){
   var user = new Parse.User();
   user.set("username", username);
   user.set("password", password);
-  if (firstName != null){
+  if (firstName.length  == 0){
     user.set("firstName", firstName);
   } else {
-    user.set("firstName", "");
+    user.set("firstName", "#empty#");
   }
-  if (lastName != null){
+  if (lastName.length == 0){
     user.set("lastName", lastName);
   } else {
-    user.set("lastName", "");
+    user.set("lastName", "#empty#");
   }
   var projects = [];
   user.set("projects", projects);

@@ -390,8 +390,11 @@ body{
   color: lightgrey;
 }
 
-#board {
-  color: white;
+#pblToSblButton {
+  position: absolute;
+  left: 20px;
+  top: 70px;
+  background-color: lightgreen;
 }
 
 /*Used for scrumBoardOther files*/
