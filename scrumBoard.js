@@ -185,7 +185,7 @@ function pblToSbl() {
   var query = new Parse.Query("ScrumBoardItems");
   query.get(objId, {
     success: function(item) {
-       if (item.get("acceptanceCriteria") != "#empty#" && item.get("role") != "#empty#" && item.get("functionality") != "#empty#" && item.get("value") != "#empty#" && item.get("size") != "#empty#") {
+      if (item.get("acceptanceCriteria") != "#empty#" && item.get("role") != "#empty#" && item.get("functionality") != "#empty#" && item.get("value") != "#empty#" && item.get("size") != "#empty#") {
         item.set("row", sblRow);
         item.set("column", 1);
         item.save();
