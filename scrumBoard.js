@@ -173,6 +173,7 @@ function buttonDown() {
       }
     }
   });
+  alert("BEFORE CONTINUING EDITING: Refresh the page for the changes to take effect.");
 }
 
 function pblToSbl() {
