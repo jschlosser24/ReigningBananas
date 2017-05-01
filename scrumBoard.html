@@ -21,10 +21,10 @@
 
 <button id="pblToSblButton" onclick="pblToSbl();">Move top item to sprint backlog</button>
 
-<body id="scrumBoardBody" onload="loadScrumBoard();">
+<body id="scrumBoardBody" onload="loadScrumBoard(); sendProjectId();">
   <div class="table">
     <ul id="pblList" class="even">
-      <li class="add"><a href="addingPBL.html?project=" + projectId>Add Product Backlog Item</a></li>
+      <li class="add"><a id="addPBL">Add Product Backlog Item</a></li>
       <li class="title">Product Backlog</li>
     </ul>
     <ul id="sblList" class="odd">

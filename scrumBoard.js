@@ -209,3 +209,8 @@ function pblToSbl() {
     }
   });
 }
+
+function sendProjectId() {
+  var link = document.getElementById("addPBL");
+  link.href = "addingPBL.html?project=" + projectId;
+}

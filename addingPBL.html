@@ -19,7 +19,7 @@
   <a href="login.html" onclick="Parse.User.current().logOut();">LogOut</a>
 </div>
 
-<body id="inviteBody"></body>
+<body id="inviteBody" onload="sendProjectId();"></body>
 <h1 id="headerProductBackLog">
 Enter the information for the new product backlog item:
  </h1>
@@ -36,14 +36,14 @@ Enter the information for the new product backlog item:
     <textarea id="acceptanceCriteria" class="form-control" cols="60" rows="7" name="acceptancCriteria" placeholder="Acceptance Criteria"></textarea><br>
     Size:<br>
     <form action="">
-      <input type="radio" name="size" value="S"> Small<br>
+      <input type="radio" name="size" value="S" checked> Small<br>
       <input type="radio" name="size" value="M"> Medium<br>
       <input type="radio" name="size" value="L"> Large<br>
       <input type="radio" name="size" value="XL"> Extra Large
     </form>
     <input type="submit" id="pBLAddButton" onclick="addingPBL(storyDescription.value, role.value, functionality.value, val.value, acceptanceCriteria.value, size.value)" value="Submit Item"/>
     <br><br>
-    <input type="submit" id="goBackButton" onclick="window.location.href='homepage.html'" value="Go back to the homepage"/>
+    <a id="goBackButton"> Go back to the project </a>
 
 </div>
   </html>
