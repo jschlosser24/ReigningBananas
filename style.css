@@ -390,12 +390,12 @@ body{
   color: lightgrey;
 }
 
-#pblToSblButton {
+/*#pblToSblButton {
   position: absolute;
   left: 20px;
   top: 70px;
   background-color: lightgreen;
-}
+}*/
 
 /*Used for scrumBoardOther files*/
 /*#scrumBoard {

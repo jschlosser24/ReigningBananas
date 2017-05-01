@@ -19,8 +19,6 @@
   <a href="login.html" onclick="Parse.User.current().logOut();">LogOut</a>
 </div>
 
-<button id="pblToSblButton" onclick="pblToSbl();">Move top item to sprint backlog</button>
-
 <body id="scrumBoardBody" onload="loadScrumBoard(); sendProjectId();">
   <div class="table">
     <ul id="pblList" class="even">
@@ -28,19 +26,19 @@
       <li class="title">Product Backlog</li>
     </ul>
     <ul id="sblList" class="odd">
-      <li class="add"><a href="addingPBL.html">Add Sprint Backlog Item</a></li>
+      <li class="add"><button id="pblToSblButton" onclick="pblToSbl();">Move top PBL item to SBL</button></li>
       <li class="title">Sprint Backlog</li>
     </ul>
     <ul id="todoList" class="even">
-      <li class="add"><a href="addingPBL.html">Add Todo Item</a></li>
+      <li class="add">What is todo</li>
       <li class="title">Todo</li>
     </ul>
     <ul id="doingList" class="odd">
-      <li class="add"><a href="addingPBL.html">Add Doing Item</a></li>
+      <li class="add">What you're doing</li>
       <li class="title">Doing</li>
     </ul>
     <ul id="completeList" class="even">
-      <li class="add"><a href="addingPBL.html">Add Complete Item</a></li>
+      <li class="add">What is complete</li>
       <li class="title">Complete</li>
     </ul>
   </div>
