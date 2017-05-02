@@ -34,14 +34,14 @@
     <form action="/action_page.php">
        Role:
       <br>
-  <select name="Role">
+  <select name="Role" id="roleText">
     <option value="developer">Developer</option>
     <option value="owner">Product Owner</option>
   </select>
 </form>
 
 
-    <input type="submit" id="inviteButton" onclick="invite(usernameText.value, projectNameText.value)" value="Invite User"/>
+    <input type="submit" id="inviteButton" onclick="invite(usernameText.value, projectNameText.value, roleText.value)" value="Invite User"/>
     <br>
     <input type="submit" id="goBackButton" onclick="window.location.href='homepage.html'" value="Go back to the homepage"/>
     <br>

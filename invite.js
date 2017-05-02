@@ -1,4 +1,4 @@
-function invite(username, projectName) {
+function invite(username, projectName, role) {
   if (username == "" || projectName == ""){
     alert("Please fill out all fields before submitting.");
     return;
@@ -50,6 +50,7 @@ function invite(username, projectName) {
                       var projectUser = new Parse.Object("UserProjectLookup");
                       projectUser.set("project", project.id);
                       projectUser.set("user", user.id);
+                      projectUser.set("role", role);
                       projectUser.save(null, {
                         success: function() {
                           alert("User " + username + " was added to group " + projectName + " successfully.");
