@@ -228,8 +228,24 @@ function pblToSbl() {
 }
 
 function sendProjectId() {
-  var link = document.getElementById("addPBL");
-  link.href = "addingPBL.html?project=" + projectId;
+  var user = Parse.User.current();
+  var query3 = new Parse.Query("UserProjectLookup");
+  query3.equalTo("project", projectId).equalTo("user", user.id);
+  query3.first({
+    success: function(lookup) {
+      if (lookup.get("role") == "owner") {
+        var link = document.getElementById("addPBL");
+        link.href = "addingPBL.html?project=" + projectId;
+      } else {
+        var link = document.getElementById("addPBL");
+        link.href = "scrumBoard.html?project=" + projectId;
+        link.onclick = function() {
+          alert("You do not have permission to do this action, you must be an owner.");
+          return;
+        }
+      }
+    }
+  });
 }
 
 function buttonEdit(){
