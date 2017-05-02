@@ -228,7 +228,6 @@ function sendProjectId() {
   query3.equalTo("project", projectId).equalTo("user", user.id);
   query3.first({
     success: function(lookup) {
-      console.log(lookup.get("role"));
       if (lookup.get("role") == "owner") {
         var link = document.getElementById("addPBL");
         link.href = "addingPBL.html?project=" + projectId;
