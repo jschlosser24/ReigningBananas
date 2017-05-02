@@ -1,6 +1,11 @@
 var projectID = getVar(window.location.href);
 
-function addingPBL(storyDescription, role, functionality, val, acceptanceCriteria, size){
+function addingPBL(sd, r, f, v, a){
+  var storyDescription = sd;
+  var role = r;
+  var functionality = f;
+  var val = v;
+  var acceptanceCriteria = a;
 
   var sizes = document.getElementsByName("size");
   var size = "S";
@@ -24,7 +29,7 @@ function addingPBL(storyDescription, role, functionality, val, acceptanceCriteri
   if(functionality.length == 0) {
     functionality = "#empty#";
   }
-  if(val.length = 0) {
+  if(val.length == 0) {
     val = "#empty#";
   }
   if (acceptanceCriteria.length == 0) {
