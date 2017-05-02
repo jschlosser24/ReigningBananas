@@ -16,6 +16,8 @@ function loadScrumBoard() {
         moveUp.innerHTML = "Move up";
         var moveDown = document.createElement("button");
         moveDown.innerHTML = "Move down";
+        var edit = document.createElement("button");
+        edit.innerHTML = "Edit";
         var item = sb[i];
         if (item.get("column") == 0){
           var listItem = document.createElement("li");
@@ -31,10 +33,13 @@ function loadScrumBoard() {
           "<br><br>Size: " + item.get("size") + "<br><br>";
           moveUp.item = item;
           moveDown.item = item;
+          edit.item = item;
           moveUp.onclick = buttonUp;
           moveDown.onclick = buttonDown;
+          edit.onclick = buttonEdit;
           listItem.appendChild(moveUp);
           listItem.appendChild(moveDown);
+          listItem.appendChild(edit);
           pblList.appendChild(listItem);
         } else if (item.get("column") == 1){
           var listItem = document.createElement("li");
@@ -223,22 +228,38 @@ function pblToSbl() {
 }
 
 function sendProjectId() {
-  var user = Parse.User.current();
-  var query3 = new Parse.Query("UserProjectLookup");
-  query3.equalTo("project", projectId).equalTo("user", user.id);
-  query3.first({
-    success: function(lookup) {
-      if (lookup.get("role") == "owner") {
-        var link = document.getElementById("addPBL");
-        link.href = "addingPBL.html?project=" + projectId;
-      } else {
-        var link = document.getElementById("addPBL");
-        link.href = "scrumBoard.html?project=" + projectId;
-        link.onclick = function(){
-          alert("You do not have permission to do this action, you must be an owner.");
-          return;
-        }
-      }
+  var link = document.getElementById("addPBL");
+  link.href = "addingPBL.html?project=" + projectId;
+}
+
+function buttonEdit(){
+  var tempItem = this.item;
+  //var editDesc = document.getElementById("storyDescription");
+  if(document.getElementById("storyDescription").value.length != 0){
+  tempItem.set("description", document.getElementById("storyDescription").value);
+  }
+  if(document.getElementById("role").value.length != 0){
+  tempItem.set("role", document.getElementById("role").value);
+}
+  if(document.getElementById("functionality").value.length != 0){
+  tempItem.set("functionality", document.getElementById("functionality").value);
+}
+  if(document.getElementById("val").value.length != 0){
+  tempItem.set("value", document.getElementById("val").value);
+}
+  if(document.getElementById("acceptanceCriteria").value.length != 0){
+  tempItem.set("acceptanceCriteria", document.getElementById("acceptanceCriteria").value);
+}
+  var sizes = document.getElementsByName("size");
+  var size = "S";
+  for (var i = 0, length = sizes.length; i < length; i++) {
+    if (sizes[i].checked) {
+      size = sizes[i].value;
+      break;
     }
-  });
+  }
+  tempItem.set("size", size);
+  tempItem.save();
+  alert("Please reload the page to see the changes");
+
 }
