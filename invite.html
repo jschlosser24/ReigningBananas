@@ -23,6 +23,7 @@
 <h1 id="inviteHeader">
   Enter project and username to invite user to project.
  </h1>
+
   <div id="inviteBox"><center>
     <input type="text" id="usernameText" placeholder="Username"/>
     <br>
@@ -30,6 +31,16 @@
     <input type="text" id="projectNameText" placeholder="Project Name"/>
     <br>
     <br>
+    <form action="/action_page.php">
+       Role:
+      <br>
+  <select name="Role">
+    <option value="developer">Developer</option>
+    <option value="owner">Product Owner</option>
+  </select>
+</form>
+
+
     <input type="submit" id="inviteButton" onclick="invite(usernameText.value, projectNameText.value)" value="Invite User"/>
     <br>
     <input type="submit" id="goBackButton" onclick="window.location.href='homepage.html'" value="Go back to the homepage"/>
