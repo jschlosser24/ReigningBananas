@@ -13,17 +13,21 @@ function addingPBL(storyDescription, role, functionality, val, acceptanceCriteri
 
   if(storyDescription.length == 0) {
     storyDescription = "#empty#";
-    if(role.length == 0  || functionality.length == 0 || val.length = 0 || acceptanceCriteria.length == 0) {
+    if(role.length == 0  || functionality.length == 0 || val.length == 0 || acceptanceCriteria.length == 0) {
       alert("You do not have all of the necessary fields completed. Please fill out the description and/or the template and acceptance criteria");
       return;
     }
-  } else if(role.length == 0) {
-    role = "#empty"
-  }  else if(functionality.length == 0) {
-    functionality = "#empty#"
-  } else if(val.length = 0) {
-    val = "#empty#"
-  } else if (acceptanceCriteria.length == 0) {
+  }
+  if(role.length == 0) {
+    role = "#empty#";
+  }
+  if(functionality.length == 0) {
+    functionality = "#empty#";
+  }
+  if(val.length = 0) {
+    val = "#empty#";
+  }
+  if (acceptanceCriteria.length == 0) {
     acceptanceCriteria = "#empty#";
   }
 
