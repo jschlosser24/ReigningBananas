@@ -12,8 +12,6 @@ function createAccount(username, password, firstName, lastName){
   } else {
     user.set("lastName", "#empty#");
   }
-  var projects = [];
-  user.set("projects", projects);
 
   user.signUp(null, {
     success: function(user) {
