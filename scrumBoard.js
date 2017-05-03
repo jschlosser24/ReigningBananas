@@ -249,6 +249,14 @@ function sendProjectId() {
 }
 
 function buttonEdit(){
+  var user9 = Parse.User.current();
+  var query9 = new Parse.Query("UserProjectLookup");
+  query9.equalTo("project", projectId).equalTo("user", user9.id);
+  query9.first({
+    success: function(lookup) {
+  if (lookup.get("role") !== "owner") {
+    alert("You cannot edit this because you are not the product owner.");
+} else {
   var tempItem = this.item;
   //var editDesc = document.getElementById("storyDescription");
   if(document.getElementById("storyDescription").value.length != 0){
@@ -277,5 +285,9 @@ function buttonEdit(){
   tempItem.set("size", size);
   tempItem.save();
   alert("Please reload the page to see the changes");
+}
+
+}
+  });
 
 }
