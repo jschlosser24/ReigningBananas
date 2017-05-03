@@ -117,7 +117,14 @@ function getVar(str) {
 
 function buttonUp() {
   var change = true;
-  var oldRow = this.item.get("row");
+  var tempItem = this.item;
+  var oldRow = tempItem.get("row");
+  var user = Parse.User.current();
+  var query2 = new Parse.Query("UserProjectLookup");
+  query2.equalTo("project", projectId).equalTo("user", user.id);
+  query2.first({
+    success: function(lookup) {
+      if (lookup.get("role") == "owner") {
   var newRow = oldRow - 1;
   if (newRow >= 0) {
     var query = new Parse.Query("ScrumBoardItems");
@@ -133,8 +140,8 @@ function buttonUp() {
       }
     });
     if (change) {
-      this.item.set("row", newRow);
-      this.item.save();
+      tempItem.set("row", newRow);
+      tempItem.save();
     }
   } else {
     alert("Cannot move this item any further up");
@@ -142,12 +149,26 @@ function buttonUp() {
   }
   alert("BEFORE CONTINUING EDITING: Refresh the page for the changes to take effect.");
 }
+else{
+  alert("You do not have permission to do this action, you must be the product owner.");
+}
+
+}
+});
+
+}
 
 function buttonDown() {
-  var change = true;
   var tempItem = this.item;
   var column = tempItem.get("column");
   var oldRow = tempItem.get("row");
+  var user = Parse.User.current();
+  var query = new Parse.Query("UserProjectLookup");
+  query.equalTo("project", projectId).equalTo("user", user.id);
+  query.first({
+    success: function(lookup) {
+      if (lookup.get("role") == "owner") {
+  var change = true;
   var newRow = oldRow + 1;
   var maxRow = 1;
   var query2 = new Parse.Query("ScrumBoardItems");
@@ -180,6 +201,14 @@ function buttonDown() {
   });
   alert("BEFORE CONTINUING EDITING: Refresh the page for the changes to take effect.");
 }
+else{
+  alert("You do not have permission to do this action, you must be the product owner.");
+}
+}
+
+});
+}
+
 
 function pblToSbl() {
   var user = Parse.User.current();
