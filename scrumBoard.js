@@ -249,45 +249,43 @@ function sendProjectId() {
 }
 
 function buttonEdit(){
-  var user9 = Parse.User.current();
-  var query9 = new Parse.Query("UserProjectLookup");
-  query9.equalTo("project", projectId).equalTo("user", user9.id);
-  query9.first({
-    success: function(lookup) {
-  if (lookup.get("role") !== "owner") {
-    alert("You cannot edit this because you are not the product owner.");
-} else {
   var tempItem = this.item;
-  //var editDesc = document.getElementById("storyDescription");
-  if(document.getElementById("storyDescription").value.length != 0){
-  tempItem.set("description", document.getElementById("storyDescription").value);
-  }
-  if(document.getElementById("role").value.length != 0){
-  tempItem.set("role", document.getElementById("role").value);
-}
-  if(document.getElementById("functionality").value.length != 0){
-  tempItem.set("functionality", document.getElementById("functionality").value);
-}
-  if(document.getElementById("val").value.length != 0){
-  tempItem.set("value", document.getElementById("val").value);
-}
-  if(document.getElementById("acceptanceCriteria").value.length != 0){
-  tempItem.set("acceptanceCriteria", document.getElementById("acceptanceCriteria").value);
-}
-  var sizes = document.getElementsByName("size");
-  var size = "S";
-  for (var i = 0, length = sizes.length; i < length; i++) {
-    if (sizes[i].checked) {
-      size = sizes[i].value;
-      break;
+  var user = Parse.User.current();
+  var query = new Parse.Query("UserProjectLookup");
+  query.equalTo("project", projectId).equalTo("user", user.id);
+  query.first({
+    success: function(lookup) {
+      if (lookup.get("role") == "owner") {
+        if(document.getElementById("storyDescription").value.length != 0){
+          tempItem.set("description", document.getElementById("storyDescription").value);
+        }
+        if(document.getElementById("role").value.length != 0){
+          tempItem.set("role", document.getElementById("role").value);
+        }
+        if(document.getElementById("functionality").value.length != 0){
+          tempItem.set("functionality", document.getElementById("functionality").value);
+        }
+        if(document.getElementById("val").value.length != 0){
+          tempItem.set("value", document.getElementById("val").value);
+        }
+        if(document.getElementById("acceptanceCriteria").value.length != 0){
+          tempItem.set("acceptanceCriteria", document.getElementById("acceptanceCriteria").value);
+        }
+        var sizes = document.getElementsByName("size");
+        var size = "S";
+        for (var i = 0, length = sizes.length; i < length; i++) {
+          if (sizes[i].checked) {
+            size = sizes[i].value;
+            break;
+          }
+        }
+        tempItem.set("size", size);
+        tempItem.save();
+        alert("Please reload the page to see the changes");
+      } else {
+        alert("You cannot edit this because you are not the product owner.");
+        return;
+      }
     }
-  }
-  tempItem.set("size", size);
-  tempItem.save();
-  alert("Please reload the page to see the changes");
-}
-
-}
   });
-
 }
