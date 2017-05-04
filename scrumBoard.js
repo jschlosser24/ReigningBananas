@@ -125,36 +125,36 @@ function buttonUp() {
   query2.first({
     success: function(lookup) {
       if (lookup.get("role") == "owner") {
-  var newRow = oldRow - 1;
-  if (newRow >= 0) {
-    var query = new Parse.Query("ScrumBoardItems");
-    query.equalTo("projectId", projectId).equalTo("column", this.item.get("column")).equalTo("row", newRow);
-    query.first({
-      success: function(switchItem) {
-        if (switchItem == null){
-          change = false;
+        var newRow = oldRow - 1;
+        if (newRow >= 0) {
+          var query = new Parse.Query("ScrumBoardItems");
+          query.equalTo("projectId", projectId).equalTo("column", tempItem.get("column")).equalTo("row", newRow);
+          query.first({
+            success: function(switchItem) {
+              if (switchItem == null){
+                change = false;
+              } else {
+                switchItem.set("row", oldRow);
+                switchItem.save();
+              }
+            }
+          });
+          if (change) {
+            tempItem.set("row", newRow);
+            tempItem.save();
+          }
         } else {
-          switchItem.set("row", oldRow);
-          switchItem.save();
+          alert("Cannot move this item any further up");
+          return;
         }
+        alert("BEFORE CONTINUING EDITING: Refresh the page for the changes to take effect.");
       }
-    });
-    if (change) {
-      tempItem.set("row", newRow);
-      tempItem.save();
-    }
-  } else {
-    alert("Cannot move this item any further up");
-    return;
-  }
-  alert("BEFORE CONTINUING EDITING: Refresh the page for the changes to take effect.");
-}
-else{
-  alert("You do not have permission to do this action, you must be the product owner.");
-}
+      else{
+        alert("You do not have permission to do this action, you must be the product owner.");
+      }
 
-}
-});
+    }
+  });
 
 }
 
@@ -168,45 +168,45 @@ function buttonDown() {
   query.first({
     success: function(lookup) {
       if (lookup.get("role") == "owner") {
-  var change = true;
-  var newRow = oldRow + 1;
-  var maxRow = 1;
-  var query2 = new Parse.Query("ScrumBoardItems");
-  query2.equalTo("projectId", projectId).equalTo("column", column).descending("row");
-  query2.first({
-    success: function(maxItem) {
-      maxRow = maxItem.get("row");
-      if (newRow <= maxRow) {
-        var query = new Parse.Query("ScrumBoardItems");
-        query.equalTo("projectId", projectId).equalTo("column", column).equalTo("row", newRow);
-        query.first({
-          success: function(switchItem) {
-            if (switchItem == null){
-              change = false;
+        var change = true;
+        var newRow = oldRow + 1;
+        var maxRow = 1;
+        var query2 = new Parse.Query("ScrumBoardItems");
+        query2.equalTo("projectId", projectId).equalTo("column", column).descending("row");
+        query2.first({
+          success: function(maxItem) {
+            maxRow = maxItem.get("row");
+            if (newRow <= maxRow) {
+              var query = new Parse.Query("ScrumBoardItems");
+              query.equalTo("projectId", projectId).equalTo("column", column).equalTo("row", newRow);
+              query.first({
+                success: function(switchItem) {
+                  if (switchItem == null){
+                    change = false;
+                  } else {
+                    switchItem.set("row", oldRow);
+                    switchItem.save();
+                  }
+                }
+              });
+              if (change) {
+                tempItem.set("row", newRow);
+                tempItem.save();
+              }
             } else {
-              switchItem.set("row", oldRow);
-              switchItem.save();
+              alert("Cannot move this item any further down");
+              return;
             }
           }
         });
-        if (change) {
-          tempItem.set("row", newRow);
-          tempItem.save();
-        }
-      } else {
-        alert("Cannot move this item any further down");
-        return;
+        alert("BEFORE CONTINUING EDITING: Refresh the page for the changes to take effect.");
+      }
+      else{
+        alert("You do not have permission to do this action, you must be the product owner.");
       }
     }
-  });
-  alert("BEFORE CONTINUING EDITING: Refresh the page for the changes to take effect.");
-}
-else{
-  alert("You do not have permission to do this action, you must be the product owner.");
-}
-}
 
-});
+  });
 }
 
 
